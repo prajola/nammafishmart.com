@@ -4,6 +4,7 @@ import { CITIES } from "../data";
 import { useStore } from "../context/store";
 import { useUI } from "../context/ui";
 import SearchBox from "./SearchBox";
+import { LogoMark } from "./Logo";
 
 export default function Header() {
   const { city, setCity, cartCount, user, logout } = useStore();
@@ -16,14 +17,12 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3">
         {/* Logo */}
         <Link to="/" className="flex shrink-0 items-center gap-2">
-          <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-lg shadow-md">
-            🐟
-          </span>
+          <LogoMark className="h-10 w-10 shadow-md" />
           <span className="leading-tight">
-            <span className="block text-lg font-extrabold text-ink">
-              Namma<span className="text-brand-600">Fish</span>Mart
+            <span className="block text-lg font-extrabold tracking-tight text-ink">
+              Namma<span className="text-brand-500">Fish</span>Mart
             </span>
-            <span className="hidden text-[10px] font-medium uppercase tracking-widest text-muted sm:block">
+            <span className="hidden text-[10px] font-semibold uppercase tracking-[0.2em] text-muted sm:block">
               Fresh from the coast
             </span>
           </span>

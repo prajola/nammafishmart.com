@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useStore } from "../context/store";
+import { LogoMark } from "./Logo";
 
 export default function Footer() {
   const { toast } = useStore();
@@ -45,11 +46,9 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 md:grid-cols-4">
         <div className="col-span-2 md:col-span-1">
           <div className="mb-3 flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-lg">
-              🐟
-            </span>
-            <span className="text-lg font-extrabold text-white">
-              NammaFishMart
+            <LogoMark className="h-9 w-9" />
+            <span className="text-lg font-extrabold tracking-tight text-white">
+              Namma<span className="text-brand-300">Fish</span>Mart
             </span>
           </div>
           <p className="text-sm text-brand-200">
