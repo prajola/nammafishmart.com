@@ -67,9 +67,23 @@ export default function HeroCarousel() {
 
   const go = (d: number) => setI((x) => (x + d + n) % n);
 
+  // Touch swipe (mobile)
+  const [touchX, setTouchX] = useState<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => setTouchX(e.touches[0].clientX);
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchX == null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) go(dx < 0 ? 1 : -1);
+    setTouchX(null);
+  };
+
   return (
     <div className="mx-auto max-w-7xl px-4 pt-6">
-      <div className="relative overflow-hidden rounded-3xl border border-brand-100 shadow-[var(--shadow-card)]">
+      <div
+        className="relative overflow-hidden rounded-3xl border border-brand-100 shadow-[var(--shadow-card)]"
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         {/* Track */}
         <div
           className="flex transition-transform duration-700 ease-out"
@@ -121,14 +135,14 @@ export default function HeroCarousel() {
         <button
           onClick={() => go(-1)}
           aria-label="Previous slide"
-          className="absolute left-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/80 text-ink shadow-md transition hover:bg-white"
+          className="absolute left-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/80 text-ink shadow-md transition hover:bg-white sm:grid"
         >
           ‹
         </button>
         <button
           onClick={() => go(1)}
           aria-label="Next slide"
-          className="absolute right-3 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/80 text-ink shadow-md transition hover:bg-white"
+          className="absolute right-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/80 text-ink shadow-md transition hover:bg-white sm:grid"
         >
           ›
         </button>
