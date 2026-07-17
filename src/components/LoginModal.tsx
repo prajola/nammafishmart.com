@@ -138,7 +138,7 @@ export default function LoginModal() {
               }}
               placeholder="Meera Nair"
               error={errors.name}
-              icon="👤"
+              icon={<UserIcon />}
             />
           )}
 
@@ -152,7 +152,7 @@ export default function LoginModal() {
             }}
             placeholder="you@example.com"
             error={errors.email}
-            icon="✉️"
+            icon={<MailIcon />}
           />
 
           {/* Password with reveal */}
@@ -178,7 +178,9 @@ export default function LoginModal() {
                   : "border-brand-200 focus-within:border-brand-500 focus-within:ring-brand-200"
               }`}
             >
-              <span className="text-muted">🔒</span>
+              <span className="flex text-muted">
+                <LockIcon />
+              </span>
               <input
                 type={show ? "text" : "password"}
                 value={password}
@@ -196,7 +198,7 @@ export default function LoginModal() {
                 aria-label={show ? "Hide password" : "Show password"}
                 title={show ? "Hide password" : "Show password"}
               >
-                {show ? "🙈" : "👁️"}
+                {show ? <EyeOffIcon /> : <EyeIcon />}
               </button>
             </div>
             {errors.password && (
@@ -233,7 +235,7 @@ export default function LoginModal() {
               }}
               placeholder="Re-enter password"
               error={errors.confirm}
-              icon="🔒"
+              icon={<LockIcon />}
             />
           )}
 
@@ -261,6 +263,50 @@ export default function LoginModal() {
   );
 }
 
+/* ── Clean line icons (Feather/Lucide style) ─────────────────────── */
+const ICLS = "h-[18px] w-[18px] shrink-0";
+const svgProps = {
+  viewBox: "0 0 24 24",
+  className: ICLS,
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true,
+};
+export const UserIcon = () => (
+  <svg {...svgProps}>
+    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+    <circle cx="12" cy="7" r="4" />
+  </svg>
+);
+export const MailIcon = () => (
+  <svg {...svgProps}>
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <path d="m3 7 9 6 9-6" />
+  </svg>
+);
+export const LockIcon = () => (
+  <svg {...svgProps}>
+    <rect x="4.5" y="10.5" width="15" height="10" rx="2" />
+    <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
+  </svg>
+);
+export const EyeIcon = () => (
+  <svg {...svgProps}>
+    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+    <circle cx="12" cy="12" r="3" />
+  </svg>
+);
+export const EyeOffIcon = () => (
+  <svg {...svgProps}>
+    <path d="M9.9 4.24A9.1 9.1 0 0 1 12 4c6.5 0 10 8 10 8a15.8 15.8 0 0 1-2 2.88M6.6 6.6A15.9 15.9 0 0 0 2 12s3.5 8 10 8a9 9 0 0 0 3.4-.66" />
+    <path d="M9.9 9.9a3 3 0 0 0 4.2 4.2" />
+    <path d="m2 2 20 20" />
+  </svg>
+);
+
 function Field({
   label,
   value,
@@ -276,7 +322,7 @@ function Field({
   placeholder?: string;
   type?: string;
   error?: string;
-  icon?: string;
+  icon?: React.ReactNode;
 }) {
   return (
     <div>
@@ -288,7 +334,7 @@ function Field({
             : "border-brand-200 focus-within:border-brand-500 focus-within:ring-brand-200"
         }`}
       >
-        {icon && <span className="text-muted">{icon}</span>}
+        {icon && <span className="flex text-muted">{icon}</span>}
         <input
           type={type}
           value={value}
