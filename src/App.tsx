@@ -6,6 +6,7 @@ import CartDrawer from "./components/CartDrawer";
 import LoginModal from "./components/LoginModal";
 import WelcomePopup from "./components/WelcomePopup";
 import Toasts from "./components/Toasts";
+import Backdrop from "./components/Backdrop";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
@@ -26,6 +27,7 @@ function ScrollTop() {
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col">
+      <Backdrop />
       {/* Announcement bar */}
       <div className="bg-gradient-to-r from-brand-600 to-brand-500 py-1.5 text-center text-xs font-semibold text-white">
         🚚 Free delivery over ₹599 · Same-day delivery · Freshness guaranteed
