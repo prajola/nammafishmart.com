@@ -4,6 +4,62 @@ import { useStore } from "../context/store";
 import { LogoMark } from "./Logo";
 
 const ICON = "h-[18px] w-[18px]";
+
+/* Payment method badges — small white chips shown in "we accept" row. */
+const CHIP = "h-6 w-9 rounded-[5px]";
+const PAYMENTS = [
+  {
+    name: "UPI",
+    icon: (
+      <svg viewBox="0 0 40 26" className={CHIP} aria-hidden="true">
+        <rect width="40" height="26" rx="5" fill="#fff" />
+        <path d="M12 6l-4 14h3l4-14z" fill="#f9682f" />
+        <path d="M17 6l-4 14h3l4-14z" fill="#5a9c3e" />
+        <text x="27" y="17" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="8" fontWeight="800" fill="#0c4a6e">UPI</text>
+      </svg>
+    ),
+  },
+  {
+    name: "Mastercard",
+    icon: (
+      <svg viewBox="0 0 40 26" className={CHIP} aria-hidden="true">
+        <rect width="40" height="26" rx="5" fill="#fff" />
+        <circle cx="17" cy="13" r="6.6" fill="#eb001b" />
+        <circle cx="23" cy="13" r="6.6" fill="#f79e1b" />
+        <path d="M20 8a6.6 6.6 0 0 0 0 10 6.6 6.6 0 0 0 0-10z" fill="#ff5f00" />
+      </svg>
+    ),
+  },
+  {
+    name: "Visa",
+    icon: (
+      <svg viewBox="0 0 40 26" className={CHIP} aria-hidden="true">
+        <rect width="40" height="26" rx="5" fill="#fff" />
+        <text x="20" y="17.5" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="11" fontWeight="800" fontStyle="italic" fill="#1a1f71">VISA</text>
+      </svg>
+    ),
+  },
+  {
+    name: "RuPay",
+    icon: (
+      <svg viewBox="0 0 40 26" className={CHIP} aria-hidden="true">
+        <rect width="40" height="26" rx="5" fill="#fff" />
+        <text x="20" y="16.5" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="8.5" fontWeight="800">
+          <tspan fill="#0c4a6e">Ru</tspan><tspan fill="#f9682f">Pay</tspan>
+        </text>
+      </svg>
+    ),
+  },
+  {
+    name: "Cash on Delivery",
+    icon: (
+      <svg viewBox="0 0 40 26" className={CHIP} aria-hidden="true">
+        <rect width="40" height="26" rx="5" fill="#fff" />
+        <text x="20" y="17" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="9" fontWeight="800" fill="#0c4a6e">₹ COD</text>
+      </svg>
+    ),
+  },
+];
 const SOCIALS = [
   {
     name: "Facebook",
@@ -142,8 +198,17 @@ export default function Footer() {
             <li>📞 1800-FRESH-FISH</li>
             <li>✉️ care@nammafishmart.com</li>
             <li>🕑 Daily 6 AM – 10 PM</li>
-            <li className="flex gap-1 pt-2 text-xl">💳 🏦 📱 💰</li>
           </ul>
+          <p className="mt-3 text-[11px] font-semibold uppercase tracking-wider text-brand-300">
+            We accept
+          </p>
+          <div className="mt-1.5 flex flex-wrap gap-1.5">
+            {PAYMENTS.map(({ name, icon }) => (
+              <span key={name} title={name} aria-label={name} className="shadow-sm">
+                {icon}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
