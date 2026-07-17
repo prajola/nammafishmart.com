@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { asset } from "../lib/asset";
 
 type Slide = {
   eyebrow: string;
@@ -118,7 +119,7 @@ export default function HeroCarousel() {
                 <div className="relative">
                   <div className="absolute -inset-3 rounded-full bg-white/50 blur-2xl" />
                   <img
-                    src={s.img}
+                    src={asset(s.img)}
                     alt={s.title}
                     className="relative h-40 w-40 rounded-full border-4 border-white object-cover shadow-xl sm:h-56 sm:w-56 md:h-64 md:w-64"
                   />

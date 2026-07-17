@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 import HeroCarousel from "../components/HeroCarousel";
 import { LogoMark } from "../components/Logo";
 import FAQ from "../components/FAQ";
+import { asset } from "../lib/asset";
 
 export default function Home() {
   const bestsellers = PRODUCTS.filter((p) => p.tags?.includes("Bestseller"));
@@ -69,7 +70,7 @@ export default function Home() {
               <span className="relative block">
                 <span className="absolute -inset-1 rounded-full bg-gradient-to-br from-brand-300 to-brand-500 opacity-0 blur-md transition group-hover:opacity-60" />
                 <img
-                  src={c.img}
+                  src={asset(c.img)}
                   alt={c.label}
                   loading="lazy"
                   className="relative h-20 w-20 rounded-full border-4 border-white object-cover shadow-md ring-1 ring-brand-100 transition duration-300 group-hover:-translate-y-1 group-hover:ring-brand-300 md:h-24 md:w-24"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PRODUCTS, type Product } from "../data";
 import ProductArt from "./ProductArt";
+import { asset } from "../lib/asset";
 
 /**
  * Real product photo with a graceful fallback: if the image is missing or
@@ -23,7 +24,7 @@ export default function ProductImage({
 
   return (
     <img
-      src={`/images/${product.id}.jpg`}
+      src={asset(`/images/${product.id}.jpg`)}
       alt={product.name}
       loading="lazy"
       onError={() => setFailed(true)}
