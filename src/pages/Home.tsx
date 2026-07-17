@@ -3,6 +3,7 @@ import { CATEGORIES, PRODUCTS } from "../data";
 import ProductCard from "../components/ProductCard";
 import HeroCarousel from "../components/HeroCarousel";
 import { LogoMark } from "../components/Logo";
+import FAQ from "../components/FAQ";
 
 export default function Home() {
   const bestsellers = PRODUCTS.filter((p) => p.tags?.includes("Bestseller"));
@@ -109,6 +110,9 @@ export default function Home() {
 
       {/* Deals */}
       <Section title="💙 Today's best deals" to="/shop" products={deals} />
+
+      {/* FAQ */}
+      <FAQ />
     </div>
   );
 }
