@@ -13,7 +13,7 @@ export default function Header() {
   const [acctOpen, setAcctOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brand-100 glass">
+    <header className="sticky top-0 z-50 border-b border-brand-100 bg-white shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3">
         {/* Logo */}
         <Link to="/" className="flex shrink-0 items-center gap-2">
