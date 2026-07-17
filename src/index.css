@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* ── Brand theme: white canvas + sky-blue splashes ───────────────── */
+@theme {
+  --color-brand-50: #f0f9ff;
+  --color-brand-100: #e0f2fe;
+  --color-brand-200: #bae6fd;
+  --color-brand-300: #7dd3fc;
+  --color-brand-400: #38bdf8;
+  --color-brand-500: #0ea5e9;
+  --color-brand-600: #0284c7;
+  --color-brand-700: #0369a1;
+  --color-brand-800: #075985;
+  --color-brand-900: #0c4a6e;
+
+  --color-ink: #0b1a2b;
+  --color-muted: #5b7186;
+
+  --font-sans: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+
+  --shadow-soft: 0 10px 30px -12px rgba(2, 132, 199, 0.25);
+  --shadow-card: 0 16px 40px -20px rgba(3, 105, 161, 0.35);
+
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  /* Falls back to system fonts gracefully if the CDN font is unavailable. */
+  src: local("Poppins");
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes pop-in {
+  0% { opacity: 0; transform: translateY(14px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes toast-in {
+  0% { opacity: 0; transform: translateX(24px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pop-in { animation: pop-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.toast-in { animation: toast-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Subtle sky texture used behind hero + section bands */
+.sky-band {
+  background:
+    radial-gradient(60% 80% at 15% 0%, rgba(56, 189, 248, 0.18), transparent 60%),
+    radial-gradient(50% 70% at 95% 20%, rgba(14, 165, 233, 0.14), transparent 60%),
+    linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Hide scrollbar for horizontal category rails */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
