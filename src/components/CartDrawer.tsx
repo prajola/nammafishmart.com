@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { money } from "../data";
 import { useStore } from "../context/store";
 import { useUI } from "../context/ui";
-import ProductArt from "./ProductArt";
-import { PRODUCTS } from "../data";
+import ProductImage from "./ProductImage";
 
 export default function CartDrawer() {
   const { cartProducts, setQty, remove, subtotal, freeDeliveryLeft } = useStore();
@@ -68,9 +67,8 @@ export default function CartDrawer() {
                   key={product.id}
                   className="flex gap-3 rounded-2xl border border-brand-100 p-2.5"
                 >
-                  <ProductArt
-                    category={product.category}
-                    seed={PRODUCTS.findIndex((p) => p.id === product.id)}
+                  <ProductImage
+                    product={product}
                     className="h-16 w-16 shrink-0 rounded-xl"
                   />
                   <div className="flex min-w-0 flex-1 flex-col">

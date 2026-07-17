@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { discountPct, money, PRODUCTS } from "../data";
 import { useStore } from "../context/store";
 import { useUI } from "../context/ui";
-import ProductArt from "../components/ProductArt";
+import ProductImage from "../components/ProductImage";
 import ProductCard from "../components/ProductCard";
 
 export default function ProductDetail() {
@@ -51,7 +51,7 @@ export default function ProductDetail() {
               {off}% OFF
             </span>
           )}
-          <ProductArt category={product.category} seed={seed} className="h-full w-full" />
+          <ProductImage product={product} className="h-72 w-full md:h-full" />
         </div>
 
         {/* Info */}

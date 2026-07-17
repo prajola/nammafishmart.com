@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { COUPONS, money, PRODUCTS } from "../data";
+import { COUPONS, money } from "../data";
 import { useStore } from "../context/store";
-import ProductArt from "../components/ProductArt";
+import ProductImage from "../components/ProductImage";
 
 export default function Cart() {
   const {
@@ -63,9 +63,8 @@ export default function Cart() {
               className="flex gap-4 rounded-2xl border border-brand-100 bg-white p-3 shadow-[var(--shadow-soft)]"
             >
               <Link to={`/product/${product.id}`}>
-                <ProductArt
-                  category={product.category}
-                  seed={PRODUCTS.findIndex((p) => p.id === product.id)}
+                <ProductImage
+                  product={product}
                   className="h-24 w-24 shrink-0 rounded-xl"
                 />
               </Link>

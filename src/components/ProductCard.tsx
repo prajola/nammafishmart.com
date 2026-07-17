@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { discountPct, money, PRODUCTS, type Product } from "../data";
+import { discountPct, money, type Product } from "../data";
 import { useStore } from "../context/store";
-import ProductArt from "./ProductArt";
+import ProductImage from "./ProductImage";
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -18,7 +18,6 @@ export default function ProductCard({ product }: { product: Product }) {
   const { add, cart, setQty } = useStore();
   const inCart = cart.find((i) => i.id === product.id);
   const off = discountPct(product);
-  const seed = PRODUCTS.findIndex((p) => p.id === product.id);
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card)]">
@@ -34,9 +33,8 @@ export default function ProductCard({ product }: { product: Product }) {
       )}
 
       <Link to={`/product/${product.id}`} className="block overflow-hidden">
-        <ProductArt
-          category={product.category}
-          seed={seed}
+        <ProductImage
+          product={product}
           className="h-40 w-full transition-transform duration-500 group-hover:scale-105"
         />
       </Link>
