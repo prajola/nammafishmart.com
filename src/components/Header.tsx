@@ -1,21 +1,15 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CITIES } from "../data";
 import { useStore } from "../context/store";
 import { useUI } from "../context/ui";
+import SearchBox from "./SearchBox";
 
 export default function Header() {
   const { city, setCity, cartCount, user, logout } = useStore();
   const { openCart, openLogin } = useUI();
-  const [q, setQ] = useState("");
   const [locOpen, setLocOpen] = useState(false);
   const [acctOpen, setAcctOpen] = useState(false);
-  const nav = useNavigate();
-
-  const search = (e: React.FormEvent) => {
-    e.preventDefault();
-    nav(`/shop?q=${encodeURIComponent(q.trim())}`);
-  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-brand-100 glass">
@@ -69,17 +63,9 @@ export default function Header() {
         </div>
 
         {/* Search */}
-        <form onSubmit={search} className="relative hidden flex-1 sm:block">
-          <input
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="Search seer fish, prawns, crab…"
-            className="w-full rounded-xl border border-brand-100 bg-white/80 py-2.5 pl-10 pr-4 text-sm outline-none transition focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
-          />
-          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted">
-            🔍
-          </span>
-        </form>
+        <div className="hidden flex-1 sm:block">
+          <SearchBox />
+        </div>
 
         <div className="flex items-center gap-1.5">
           <Link
@@ -151,17 +137,9 @@ export default function Header() {
       </div>
 
       {/* Mobile search */}
-      <form onSubmit={search} className="relative px-4 pb-3 sm:hidden">
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search fresh seafood…"
-          className="w-full rounded-xl border border-brand-100 bg-white py-2.5 pl-10 pr-4 text-sm outline-none focus:border-brand-400"
-        />
-        <span className="pointer-events-none absolute left-7 top-1/2 -translate-y-1/2 text-muted">
-          🔍
-        </span>
-      </form>
+      <div className="px-4 pb-3 sm:hidden">
+        <SearchBox placeholder="Search fresh seafood…" />
+      </div>
     </header>
   );
 }
