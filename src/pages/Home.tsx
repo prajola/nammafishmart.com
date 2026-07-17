@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { CATEGORIES, PRODUCTS } from "../data";
 import ProductCard from "../components/ProductCard";
+import HeroCarousel from "../components/HeroCarousel";
+import { LogoMark } from "../components/Logo";
 
 export default function Home() {
   const bestsellers = PRODUCTS.filter((p) => p.tags?.includes("Bestseller"));
@@ -10,65 +12,44 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero */}
-      <section className="sky-band relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-12 md:grid-cols-2 md:py-16">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-bold text-brand-700 shadow-sm ring-1 ring-brand-100">
-              🐟 Cleaned · Cut · Delivered in hours
-            </span>
-            <h1 className="mt-4 text-4xl font-extrabold leading-tight text-ink md:text-5xl">
-              Ocean-fresh seafood,
-              <span className="block bg-gradient-to-r from-brand-500 to-brand-700 bg-clip-text text-transparent">
-                delivered to your door.
-              </span>
-            </h1>
-            <p className="mt-4 max-w-md text-muted">
-              Hand-picked at the harbour every morning, cleaned and cut just the
-              way you like. From vanjaram steaks to jumbo prawns — freshness you
-              can taste.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link
-                to="/shop"
-                className="rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 px-6 py-3 font-bold text-white shadow-lg shadow-brand-200 transition hover:scale-105"
-              >
-                Shop the catch →
-              </Link>
-              <Link
-                to="/shop?cat=Combo"
-                className="rounded-xl border border-brand-200 bg-white px-6 py-3 font-bold text-brand-700 hover:bg-brand-50"
-              >
-                View combos
-              </Link>
-            </div>
-            <div className="mt-8 flex flex-wrap gap-6 text-sm">
-              {[
-                ["🚚", "Same-day delivery"],
-                ["🧊", "Never frozen"],
-                ["✅", "Freshness guarantee"],
-              ].map(([i, t]) => (
-                <span key={t} className="flex items-center gap-2 font-medium text-ink">
-                  <span className="text-lg">{i}</span>
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
+      {/* Hero carousel */}
+      <HeroCarousel />
 
-          <div className="relative hidden md:block">
-            <div className="animate-[float_6s_ease-in-out_infinite] mx-auto grid aspect-square max-w-sm place-items-center rounded-[2.5rem] bg-gradient-to-br from-brand-400 to-brand-600 text-[10rem] shadow-2xl">
-              🎣
-            </div>
-            <div className="absolute -left-2 top-6 rounded-2xl bg-white px-4 py-3 shadow-xl">
-              <p className="text-xs text-muted">Today's catch</p>
-              <p className="font-extrabold text-ink">Seer · Prawns · Crab</p>
-            </div>
-            <div className="absolute -right-2 bottom-8 rounded-2xl bg-white px-4 py-3 shadow-xl">
-              <p className="text-xs text-muted">Rated by 12,000+</p>
-              <p className="font-extrabold text-amber-500">★ 4.8 / 5</p>
-            </div>
+      {/* Trust bar */}
+      <div className="mx-auto max-w-7xl px-4 pt-4">
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm">
+          {[
+            ["🚚", "Same-day delivery"],
+            ["🧊", "Never frozen"],
+            ["🔪", "Cleaned & cut free"],
+            ["✅", "Freshness guarantee"],
+          ].map(([i, t]) => (
+            <span key={t} className="flex items-center gap-2 font-semibold text-ink">
+              <span className="text-lg">{i}</span>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Namma Prime membership strip */}
+      <section className="mx-auto max-w-7xl px-4 pt-6">
+        <div className="flex flex-col items-center gap-4 rounded-3xl bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 p-5 text-white shadow-lg sm:flex-row sm:p-6">
+          <div className="flex shrink-0 items-center gap-2 rounded-2xl bg-white px-4 py-2.5 shadow-md">
+            <LogoMark className="h-8 w-8" />
+            <span className="text-lg font-extrabold tracking-tight text-brand-700">
+              Namma<span className="text-brand-500">Prime</span> 👑
+            </span>
           </div>
+          <p className="flex-1 text-center font-semibold sm:text-left">
+            Enjoy special member prices & unlimited free deliveries — always.
+          </p>
+          <Link
+            to="/shop"
+            className="shrink-0 rounded-xl bg-white px-5 py-2.5 font-bold text-brand-700 shadow-md transition hover:scale-105"
+          >
+            Know more
+          </Link>
         </div>
       </section>
 
