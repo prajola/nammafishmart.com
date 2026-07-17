@@ -58,17 +58,25 @@ export default function Home() {
         <h2 className="mb-5 text-2xl font-extrabold text-ink">
           Shop by category
         </h2>
-        <div className="no-scrollbar flex gap-3 overflow-x-auto pb-2 md:grid md:grid-cols-7 md:overflow-visible">
+        <div className="no-scrollbar flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-7 md:gap-3 md:overflow-visible">
           {CATEGORIES.map((c) => (
             <Link
               key={c.key}
               to={`/shop?cat=${c.key}`}
-              className="group flex min-w-[104px] flex-col items-center gap-2 rounded-2xl border border-brand-100 bg-white p-4 text-center shadow-[var(--shadow-soft)] transition hover:-translate-y-1 hover:border-brand-300"
+              className="group flex min-w-[92px] flex-col items-center gap-2.5 text-center"
             >
-              <span className="grid h-14 w-14 place-items-center rounded-full bg-brand-50 text-3xl transition group-hover:scale-110">
-                {c.emoji}
+              <span className="relative block">
+                <span className="absolute -inset-1 rounded-full bg-gradient-to-br from-brand-300 to-brand-500 opacity-0 blur-md transition group-hover:opacity-60" />
+                <img
+                  src={c.img}
+                  alt={c.label}
+                  loading="lazy"
+                  className="relative h-20 w-20 rounded-full border-4 border-white object-cover shadow-md ring-1 ring-brand-100 transition duration-300 group-hover:-translate-y-1 group-hover:ring-brand-300 md:h-24 md:w-24"
+                />
               </span>
-              <span className="text-xs font-bold text-ink">{c.label}</span>
+              <span className="text-xs font-bold text-ink group-hover:text-brand-600">
+                {c.label}
+              </span>
             </Link>
           ))}
         </div>

@@ -23,14 +23,19 @@ export interface Product {
   reviews: number;
 }
 
-export const CATEGORIES: { key: Category; label: string; emoji: string }[] = [
-  { key: "Fish", label: "Fish", emoji: "🐟" },
-  { key: "Prawns", label: "Prawns & Shrimp", emoji: "🦐" },
-  { key: "Crab", label: "Crab", emoji: "🦀" },
-  { key: "Squid", label: "Squid & Calamari", emoji: "🦑" },
-  { key: "Shellfish", label: "Shellfish", emoji: "🐚" },
-  { key: "Dried", label: "Dried & Cured", emoji: "🌾" },
-  { key: "Combo", label: "Combos", emoji: "🎁" },
+export const CATEGORIES: {
+  key: Category;
+  label: string;
+  emoji: string;
+  img: string;
+}[] = [
+  { key: "Fish", label: "Fish", emoji: "🐟", img: "/images/mackerel-whole.jpg" },
+  { key: "Prawns", label: "Prawns & Shrimp", emoji: "🦐", img: "/images/tiger-prawns.jpg" },
+  { key: "Crab", label: "Crab", emoji: "🦀", img: "/images/mud-crab.jpg" },
+  { key: "Squid", label: "Squid & Calamari", emoji: "🦑", img: "/images/squid-rings.jpg" },
+  { key: "Shellfish", label: "Shellfish", emoji: "🐚", img: "/images/green-mussels.jpg" },
+  { key: "Dried", label: "Dried & Cured", emoji: "🌾", img: "/images/dried-anchovy.jpg" },
+  { key: "Combo", label: "Combos", emoji: "🎁", img: "/images/family-feast.jpg" },
 ];
 
 export const CITIES = [
