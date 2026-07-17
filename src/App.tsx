@@ -12,6 +12,10 @@ import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
+import About from "./pages/About";
+import Sourcing from "./pages/Sourcing";
+import Careers from "./pages/Careers";
+import Contact from "./pages/Contact";
 
 function ScrollTop() {
   const { pathname } = useLocation();
@@ -38,6 +42,10 @@ export default function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/sourcing" element={<Sourcing />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </main>

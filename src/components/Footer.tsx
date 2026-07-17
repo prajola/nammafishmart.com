@@ -80,10 +80,10 @@ export default function Footer() {
         <FooterCol
           title="Company"
           links={[
-            ["About us", "/shop"],
-            ["Our sourcing", "/shop"],
-            ["Careers", "/shop"],
-            ["Contact", "/shop"],
+            ["About us", "/about"],
+            ["Our sourcing", "/sourcing"],
+            ["Careers", "/careers"],
+            ["Contact", "/contact"],
           ]}
         />
         <div>
