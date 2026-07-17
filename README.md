@@ -1,6 +1,10 @@
 # 🐟 Namma Fish Mart
 
+### 🔗 Live demo: **https://prajola.github.io/nammafishmart.com/**
+
 A modern, fully-working **fresh fish & seafood** storefront — white + sky-blue theme, built with **React + Vite + TypeScript + Tailwind CSS v4**.
+
+Auto-deployed to GitHub Pages on every push to `main`.
 
 > An original demo storefront (branding, copy, catalogue and artwork are all original). No backend required — auth, cart, coupons and orders persist in the browser via `localStorage`, so every flow works end-to-end.
 
