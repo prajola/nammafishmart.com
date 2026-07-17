@@ -41,6 +41,15 @@ interface Store {
   // auth
   user: User | null;
   login: (email: string, name?: string, phone?: string) => void;
+  register: (
+    name: string,
+    email: string,
+    password: string
+  ) => { ok: boolean; error?: string };
+  authenticate: (
+    email: string,
+    password: string
+  ) => { ok: boolean; error?: "no-account" | "bad-password" };
   logout: () => void;
   // location
   city: string;
@@ -108,6 +117,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>(() => load("nfm_cart", []));
   const [coupon, setCoupon] = useState<string | null>(() => load("nfm_coupon", null));
   const [orders, setOrders] = useState<Order[]>(() => load("nfm_orders", []));
+  // Registered accounts — DEMO ONLY (stored in the browser, never send real
+  // passwords to a client like this in production).
+  const [accounts, setAccounts] = useState<
+    Record<string, { name: string; password: string }>
+  >(() => load("nfm_accounts", {}));
   const [toasts, setToasts] = useState<Toast[]>([]);
   const [seenWelcome, setSeenWelcome] = useState<boolean>(() =>
     load("nfm_welcome", false)
@@ -118,6 +132,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   useEffect(() => save("nfm_cart", cart), [cart]);
   useEffect(() => save("nfm_coupon", coupon), [coupon]);
   useEffect(() => save("nfm_orders", orders), [orders]);
+  useEffect(() => save("nfm_accounts", accounts), [accounts]);
   useEffect(() => save("nfm_welcome", seenWelcome), [seenWelcome]);
 
   /* ── toasts ── */
@@ -210,6 +225,26 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     toast("You've been logged out.", "info");
   }
 
+  function register(name: string, email: string, password: string) {
+    const key = email.trim().toLowerCase();
+    if (accounts[key])
+      return { ok: false, error: "An account with this email already exists. Try logging in." };
+    setAccounts((a) => ({ ...a, [key]: { name: name.trim(), password } }));
+    setUser({ email: key, name: name.trim() });
+    toast(`Account created — welcome aboard, ${name.trim().split(" ")[0]}! 🎉`, "success");
+    return { ok: true };
+  }
+
+  function authenticate(email: string, password: string) {
+    const key = email.trim().toLowerCase();
+    const acc = accounts[key];
+    if (!acc) return { ok: false, error: "no-account" as const };
+    if (acc.password !== password) return { ok: false, error: "bad-password" as const };
+    setUser({ email: key, name: acc.name });
+    toast(`Welcome back, ${acc.name.split(" ")[0]}! 🐟`, "success");
+    return { ok: true };
+  }
+
   /* ── orders ── */
   function placeOrder(address: Order["address"], slot: string): Order {
     const order: Order = {
@@ -241,6 +276,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const value: Store = {
     user,
     login,
+    register,
+    authenticate,
     logout,
     city,
     setCity: setCityState,
