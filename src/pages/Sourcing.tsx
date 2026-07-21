@@ -12,7 +12,7 @@ export default function Sourcing() {
     <div>
       <section className="sky-band">
         <div className="mx-auto max-w-5xl px-4 py-14 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-bold text-brand-700 shadow-sm ring-1 ring-brand-100">
+          <span className="inline-flex items-center gap-2 rounded-full bg-navy-800 px-3 py-1 text-xs font-bold text-brand-700 shadow-sm ring-1 ring-brand-100">
             🌊 Our sourcing
           </span>
           <h1 className="mt-4 text-4xl font-extrabold text-ink md:text-5xl">
@@ -35,7 +35,7 @@ export default function Sourcing() {
               <div className="z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-brand-400 to-brand-600 text-2xl text-white shadow-md">
                 {icon}
               </div>
-              <div className="rounded-2xl border border-brand-100 bg-white p-5 shadow-[var(--shadow-soft)]">
+              <div className="rounded-2xl border border-white/10 bg-navy-800 p-5 shadow-[var(--shadow-soft)]">
                 <p className="text-xs font-bold uppercase tracking-widest text-brand-500">
                   Step {i + 1}
                 </p>
@@ -52,7 +52,7 @@ export default function Sourcing() {
             ["🧪", "Lab-tested", "Regular water and sample testing keeps every batch safe and clean."],
             ["♻️", "Zero-waste packing", "Recyclable, insulated packaging that keeps cold in and waste out."],
           ].map(([i, t, d]) => (
-            <div key={t} className="rounded-2xl bg-brand-50/60 p-5">
+            <div key={t} className="rounded-2xl bg-white/5 p-5">
               <div className="text-3xl">{i}</div>
               <h3 className="mt-2 font-bold text-ink">{t}</h3>
               <p className="text-sm text-muted">{d}</p>

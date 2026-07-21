@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import { CATEGORIES, PRODUCTS } from "../data";
+import { useCatalog } from "../context/catalog";
+import type { CatalogProduct } from "../lib/catalog";
 import ProductCard from "../components/ProductCard";
 import HeroCarousel from "../components/HeroCarousel";
-import { LogoMark } from "../components/Logo";
 import FAQ from "../components/FAQ";
 import { asset } from "../lib/asset";
 
 export default function Home() {
+  const { categories: CATEGORIES, products: PRODUCTS } = useCatalog();
   const bestsellers = PRODUCTS.filter((p) => p.tags?.includes("Bestseller"));
   const deals = [...PRODUCTS]
     .sort((a, b) => (b.mrp - b.price) / b.mrp - (a.mrp - a.price) / a.mrp)
@@ -37,8 +38,7 @@ export default function Home() {
       {/* Namma Prime membership strip */}
       <section className="mx-auto max-w-7xl px-4 pt-6">
         <div className="flex flex-col items-center gap-4 rounded-3xl bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 p-5 text-white shadow-lg sm:flex-row sm:p-6">
-          <div className="flex shrink-0 items-center gap-2 rounded-2xl bg-white px-4 py-2.5 shadow-md">
-            <LogoMark className="h-8 w-8" />
+          <div className="flex shrink-0 items-center gap-2 rounded-2xl bg-navy-800 px-4 py-2.5 shadow-md">
             <span className="text-lg font-extrabold tracking-tight text-brand-700">
               Namma<span className="text-brand-500">Prime</span> 👑
             </span>
@@ -48,7 +48,7 @@ export default function Home() {
           </p>
           <Link
             to="/shop"
-            className="shrink-0 rounded-xl bg-white px-5 py-2.5 font-bold text-brand-700 shadow-md transition hover:scale-105"
+            className="shrink-0 rounded-xl bg-navy-800 px-5 py-2.5 font-bold text-brand-700 shadow-md transition hover:scale-105"
           >
             Know more
           </Link>
@@ -60,7 +60,7 @@ export default function Home() {
         <h2 className="mb-5 text-2xl font-extrabold text-ink">
           Shop by category
         </h2>
-        <div className="no-scrollbar flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-7 md:gap-3 md:overflow-visible">
+        <div className="no-scrollbar flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-6 md:gap-3 md:overflow-visible">
           {CATEGORIES.map((c) => (
             <Link
               key={c.key}
@@ -94,7 +94,7 @@ export default function Home() {
           ].map(([i, t, s]) => (
             <div
               key={t}
-              className="flex items-center gap-3 rounded-2xl border border-brand-100 bg-gradient-to-r from-brand-50 to-white p-4"
+              className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4"
             >
               <span className="text-3xl">{i}</span>
               <div>
@@ -125,7 +125,7 @@ function Section({
 }: {
   title: string;
   to: string;
-  products: typeof PRODUCTS;
+  products: CatalogProduct[];
 }) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-8">

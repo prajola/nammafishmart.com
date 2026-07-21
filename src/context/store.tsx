@@ -6,7 +6,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { COUPONS, PRODUCTS, type Product } from "../data";
+import { COUPONS, type Product } from "../data";
+import { productById } from "../lib/catalog";
 
 /* ── Types ───────────────────────────────────────────────────────── */
 export interface User {
@@ -109,7 +110,7 @@ function save(key: string, value: unknown) {
   }
 }
 
-const byId = (id: string) => PRODUCTS.find((p) => p.id === id);
+const byId = (id: string) => productById(id);
 
 export function StoreProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(() => load("nfm_user", null));

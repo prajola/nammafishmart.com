@@ -14,17 +14,17 @@ export default function CartDrawer() {
       aria-hidden={!cartOpen}
     >
       <div
-        className={`absolute inset-0 bg-brand-900/40 backdrop-blur-sm transition-opacity ${
+        className={`absolute inset-0 bg-navy-900/75 backdrop-blur-md transition-opacity ${
           cartOpen ? "opacity-100" : "opacity-0"
         }`}
         onClick={closeCart}
       />
       <aside
-        className={`absolute right-0 top-0 flex h-full w-[min(92vw,420px)] flex-col bg-white shadow-2xl transition-transform duration-300 ${
+        className={`absolute right-0 top-0 flex h-full w-[min(92vw,420px)] flex-col bg-navy-800 shadow-2xl transition-transform duration-300 ${
           cartOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between border-b border-brand-100 px-5 py-4">
+        <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
           <h2 className="text-lg font-extrabold text-ink">
             Your Cart{" "}
             <span className="text-sm font-medium text-muted">
@@ -33,7 +33,7 @@ export default function CartDrawer() {
           </h2>
           <button
             onClick={closeCart}
-            className="grid h-8 w-8 place-items-center rounded-full hover:bg-brand-50"
+            className="grid h-8 w-8 place-items-center rounded-full hover:bg-white/10"
             aria-label="Close cart"
           >
             ✕
@@ -41,7 +41,7 @@ export default function CartDrawer() {
         </div>
 
         {freeDeliveryLeft > 0 && subtotal > 0 && (
-          <div className="bg-brand-50 px-5 py-2.5 text-center text-xs font-semibold text-brand-700">
+          <div className="bg-white/5 px-5 py-2.5 text-center text-xs font-semibold text-brand-700">
             Add {money(freeDeliveryLeft)} more for FREE delivery 🚚
           </div>
         )}
@@ -65,7 +65,7 @@ export default function CartDrawer() {
               {cartProducts.map(({ product, qty }) => (
                 <div
                   key={product.id}
-                  className="flex gap-3 rounded-2xl border border-brand-100 p-2.5"
+                  className="flex gap-3 rounded-2xl border border-white/10 p-2.5"
                 >
                   <ProductImage
                     product={product}
@@ -77,10 +77,10 @@ export default function CartDrawer() {
                     </p>
                     <p className="text-xs text-muted">{product.unit}</p>
                     <div className="mt-auto flex items-center justify-between">
-                      <div className="flex items-center gap-1 rounded-full bg-brand-50 p-0.5 ring-1 ring-brand-200">
+                      <div className="flex items-center gap-1 rounded-full bg-white/5 p-0.5 ring-1 ring-brand-200">
                         <button
                           onClick={() => setQty(product.id, qty - 1)}
-                          className="grid h-6 w-6 place-items-center rounded-full text-brand-700 hover:bg-white"
+                          className="grid h-6 w-6 place-items-center rounded-full text-brand-700 hover:bg-navy-800"
                         >
                           −
                         </button>
@@ -89,7 +89,7 @@ export default function CartDrawer() {
                         </span>
                         <button
                           onClick={() => setQty(product.id, qty + 1)}
-                          className="grid h-6 w-6 place-items-center rounded-full text-brand-700 hover:bg-white"
+                          className="grid h-6 w-6 place-items-center rounded-full text-brand-700 hover:bg-navy-800"
                         >
                           +
                         </button>
@@ -110,7 +110,7 @@ export default function CartDrawer() {
               ))}
             </div>
 
-            <div className="border-t border-brand-100 p-5">
+            <div className="border-t border-white/10 p-5">
               <div className="mb-3 flex items-center justify-between">
                 <span className="text-sm text-muted">Subtotal</span>
                 <span className="text-lg font-extrabold text-ink">
@@ -120,7 +120,7 @@ export default function CartDrawer() {
               <Link
                 to="/cart"
                 onClick={closeCart}
-                className="block w-full rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3 text-center font-bold text-white shadow-lg shadow-brand-200 transition hover:brightness-105"
+                className="block w-full rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3 text-center font-bold text-white shadow-lg transition hover:brightness-105"
               >
                 View cart & checkout →
               </Link>

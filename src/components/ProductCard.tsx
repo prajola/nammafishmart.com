@@ -20,7 +20,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const off = discountPct(product);
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-brand-100 bg-white shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card)]">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-navy-800 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card)]">
       {off > 0 && (
         <span className="absolute left-3 top-3 z-10 rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-2.5 py-1 text-[11px] font-bold text-white shadow">
           {off}% OFF
@@ -60,22 +60,31 @@ export default function ProductCard({ product }: { product: Product }) {
 
         <div className="mt-3 flex items-end justify-between">
           <div>
+            {product.startFrom && (
+              <span className="block text-[11px] font-semibold text-muted">
+                Start from
+              </span>
+            )}
             <span className="text-lg font-extrabold text-ink">
               {money(product.price)}
             </span>
-            {product.mrp > product.price && (
+            {!product.startFrom && product.mrp > product.price && (
               <span className="ml-1.5 text-xs text-muted line-through">
                 {money(product.mrp)}
               </span>
             )}
           </div>
 
-          {inCart ? (
-            <div className="flex items-center gap-1 rounded-full bg-brand-50 p-0.5 ring-1 ring-brand-200">
+          {product.soldOut ? (
+            <span className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-2 text-sm font-bold text-muted">
+              🛒 Out Of Stock
+            </span>
+          ) : inCart ? (
+            <div className="flex items-center gap-1 rounded-full bg-white/5 p-0.5 ring-1 ring-brand-200">
               <button
                 aria-label="decrease"
                 onClick={() => setQty(product.id, inCart.qty - 1)}
-                className="grid h-7 w-7 place-items-center rounded-full text-brand-700 hover:bg-white"
+                className="grid h-7 w-7 place-items-center rounded-full text-brand-700 hover:bg-navy-800"
               >
                 −
               </button>
@@ -85,7 +94,7 @@ export default function ProductCard({ product }: { product: Product }) {
               <button
                 aria-label="increase"
                 onClick={() => setQty(product.id, inCart.qty + 1)}
-                className="grid h-7 w-7 place-items-center rounded-full text-brand-700 hover:bg-white"
+                className="grid h-7 w-7 place-items-center rounded-full text-brand-700 hover:bg-navy-800"
               >
                 +
               </button>
@@ -93,7 +102,7 @@ export default function ProductCard({ product }: { product: Product }) {
           ) : (
             <button
               onClick={() => add(product.id)}
-              className="rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-4 py-2 text-sm font-bold text-white shadow-md shadow-brand-200 transition-transform hover:scale-105 active:scale-95"
+              className="rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-4 py-2 text-sm font-bold text-white shadow-md transition-transform hover:scale-105 active:scale-95"
             >
               Add
             </button>

@@ -26,10 +26,10 @@ export default function WelcomePopup() {
   return (
     <div className="fixed inset-0 z-[95] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-brand-900/40 backdrop-blur-sm" onClick={close} />
-      <div className="pop-in relative w-full max-w-md overflow-hidden rounded-3xl bg-white text-center shadow-2xl">
+      <div className="pop-in relative w-full max-w-md overflow-hidden rounded-3xl bg-navy-800 text-center shadow-2xl">
         <button
           onClick={close}
-          className="absolute right-4 top-4 z-10 grid h-8 w-8 place-items-center rounded-full bg-white/70 text-ink hover:bg-white"
+          className="absolute right-4 top-4 z-10 grid h-8 w-8 place-items-center rounded-full bg-white/90 text-navy-900 hover:bg-white"
           aria-label="Close"
         >
           ✕
@@ -44,13 +44,13 @@ export default function WelcomePopup() {
         </div>
         <div className="px-8 pb-8 pt-6">
           <div className="mb-4 flex items-center justify-center gap-2">
-            <span className="rounded-lg border-2 border-dashed border-brand-400 bg-brand-50 px-4 py-2 text-lg font-extrabold tracking-widest text-brand-700">
+            <span className="rounded-lg border-2 border-dashed border-brand-400 bg-white/5 px-4 py-2 text-lg font-extrabold tracking-widest text-brand-700">
               NEW50
             </span>
           </div>
           <button
             onClick={grab}
-            className="w-full rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3 font-bold text-white shadow-lg shadow-brand-200 transition hover:brightness-105"
+            className="w-full rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3 font-bold text-white shadow-lg transition hover:brightness-105"
           >
             Grab the offer
           </button>

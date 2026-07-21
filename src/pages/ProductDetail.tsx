@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
-import { discountPct, money, PRODUCTS } from "../data";
+import { discountPct, money } from "../data";
+import { useCatalog } from "../context/catalog";
 import { useStore } from "../context/store";
 import { useUI } from "../context/ui";
 import ProductImage from "../components/ProductImage";
@@ -7,6 +8,7 @@ import ProductCard from "../components/ProductCard";
 
 export default function ProductDetail() {
   const { id } = useParams();
+  const { products: PRODUCTS } = useCatalog();
   const product = PRODUCTS.find((p) => p.id === id);
   const { add, cart, setQty } = useStore();
   const { openCart } = useUI();
@@ -45,7 +47,7 @@ export default function ProductDetail() {
 
       <div className="grid gap-8 md:grid-cols-2">
         {/* Art */}
-        <div className="relative overflow-hidden rounded-3xl border border-brand-100 shadow-[var(--shadow-card)]">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-[var(--shadow-card)]">
           {off > 0 && (
             <span className="absolute left-4 top-4 z-10 rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-3 py-1.5 text-sm font-bold text-white shadow">
               {off}% OFF
@@ -60,7 +62,7 @@ export default function ProductDetail() {
             {product.tags?.map((t) => (
               <span
                 key={t}
-                className="rounded-full bg-brand-50 px-3 py-1 text-xs font-bold text-brand-700 ring-1 ring-brand-100"
+                className="rounded-full bg-white/5 px-3 py-1 text-xs font-bold text-brand-700 ring-1 ring-brand-100"
               >
                 {t}
               </span>
@@ -81,10 +83,15 @@ export default function ProductDetail() {
           </div>
 
           <div className="mt-4 flex items-end gap-3">
+            {product.startFrom && (
+              <span className="pb-1.5 text-lg font-semibold text-muted">
+                Start from
+              </span>
+            )}
             <span className="text-4xl font-extrabold text-ink">
               {money(product.price)}
             </span>
-            {product.mrp > product.price && (
+            {!product.startFrom && product.mrp > product.price && (
               <>
                 <span className="pb-1 text-lg text-muted line-through">
                   {money(product.mrp)}
@@ -106,7 +113,7 @@ export default function ProductDetail() {
               ["Serves", product.serves ?? "—"],
               ["Category", product.category],
             ].map(([k, v]) => (
-              <div key={k} className="rounded-xl border border-brand-100 bg-brand-50/40 p-3">
+              <div key={k} className="rounded-xl border border-white/10 bg-white/5 p-3">
                 <dt className="text-xs font-semibold uppercase text-muted">{k}</dt>
                 <dd className="font-bold text-ink">{v}</dd>
               </div>
@@ -115,11 +122,15 @@ export default function ProductDetail() {
 
           {/* CTA */}
           <div className="mt-6 flex items-center gap-3">
-            {inCart ? (
-              <div className="flex items-center gap-2 rounded-xl bg-brand-50 p-1 ring-1 ring-brand-200">
+            {product.soldOut ? (
+              <span className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 py-3.5 text-lg font-bold text-muted">
+                🛒 Out Of Stock
+              </span>
+            ) : inCart ? (
+              <div className="flex items-center gap-2 rounded-xl bg-white/5 p-1 ring-1 ring-brand-200">
                 <button
                   onClick={() => setQty(product.id, inCart.qty - 1)}
-                  className="grid h-11 w-11 place-items-center rounded-lg text-xl font-bold text-brand-700 hover:bg-white"
+                  className="grid h-11 w-11 place-items-center rounded-lg text-xl font-bold text-brand-700 hover:bg-navy-800"
                 >
                   −
                 </button>
@@ -128,7 +139,7 @@ export default function ProductDetail() {
                 </span>
                 <button
                   onClick={() => setQty(product.id, inCart.qty + 1)}
-                  className="grid h-11 w-11 place-items-center rounded-lg text-xl font-bold text-brand-700 hover:bg-white"
+                  className="grid h-11 w-11 place-items-center rounded-lg text-xl font-bold text-brand-700 hover:bg-navy-800"
                 >
                   +
                 </button>
@@ -136,14 +147,14 @@ export default function ProductDetail() {
             ) : (
               <button
                 onClick={() => add(product.id)}
-                className="flex-1 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3.5 text-lg font-bold text-white shadow-lg shadow-brand-200 transition hover:scale-[1.02]"
+                className="flex-1 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3.5 text-lg font-bold text-white shadow-lg transition hover:scale-[1.02]"
               >
                 Add to cart · {money(product.price)}
               </button>
             )}
             <button
               onClick={openCart}
-              className="rounded-xl border border-brand-200 bg-white px-6 py-3.5 font-bold text-brand-700 hover:bg-brand-50"
+              className="rounded-xl border border-white/15 bg-navy-800 px-6 py-3.5 font-bold text-brand-700 hover:bg-white/10"
             >
               Go to cart 🛒
             </button>

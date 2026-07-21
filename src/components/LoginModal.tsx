@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useStore } from "../context/store";
 import { useUI } from "../context/ui";
+import { LogoMark } from "./Logo";
 
 type Mode = "login" | "signup";
 
@@ -85,20 +86,20 @@ export default function LoginModal() {
 
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-brand-900/50 backdrop-blur-sm" onClick={close} />
-      <div className="pop-in relative w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl">
+      <div className="absolute inset-0 bg-navy-900/75 backdrop-blur-md" onClick={close} />
+      <div className="pop-in relative w-full max-w-md overflow-hidden rounded-3xl border border-white/10 bg-navy-800 shadow-2xl">
         {/* Header band */}
         <div className="sky-band relative px-6 pt-7 pb-6">
           <button
             onClick={close}
-            className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full bg-white/70 text-ink hover:bg-white"
+            className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full bg-white/10 text-ink transition hover:bg-white/20"
             aria-label="Close"
           >
             ✕
           </button>
-          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-brand-400 to-brand-600 text-2xl shadow-md">
-            🐟
-          </div>
+          <span className="grid h-14 w-14 place-items-center rounded-2xl bg-white/5 shadow-md ring-1 ring-white/10">
+            <LogoMark className="h-11 w-11" />
+          </span>
           <h2 className="mt-3 text-2xl font-extrabold text-ink">
             {mode === "login" ? "Welcome back" : "Create your account"}
           </h2>
@@ -109,14 +110,14 @@ export default function LoginModal() {
           </p>
 
           {/* Tab switch */}
-          <div className="mt-4 flex rounded-xl bg-white/70 p-1 text-sm font-bold">
+          <div className="mt-4 flex rounded-xl border border-white/10 bg-white/5 p-1 text-sm font-bold">
             {(["login", "signup"] as Mode[]).map((m) => (
               <button
                 key={m}
                 onClick={() => switchMode(m)}
                 className={`flex-1 rounded-lg py-2 transition ${
                   mode === m
-                    ? "bg-white text-brand-700 shadow"
+                    ? "bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow"
                     : "text-muted hover:text-ink"
                 }`}
               >
@@ -172,10 +173,10 @@ export default function LoginModal() {
               )}
             </label>
             <div
-              className={`flex items-center rounded-xl border bg-brand-50/40 px-3 transition focus-within:bg-white focus-within:ring-2 ${
+              className={`flex items-center rounded-xl border bg-white/5 px-3 transition focus-within:bg-navy-800 focus-within:ring-2 ${
                 errors.password
                   ? "border-red-400 focus-within:ring-red-100"
-                  : "border-brand-200 focus-within:border-brand-500 focus-within:ring-brand-200"
+                  : "border-white/15 focus-within:border-brand-500 focus-within:ring-brand-200"
               }`}
             >
               <span className="flex text-muted">
@@ -212,7 +213,7 @@ export default function LoginModal() {
                     <span
                       key={i}
                       className={`h-1.5 flex-1 rounded-full ${
-                        i < strength.score ? strength.color : "bg-brand-100"
+                        i < strength.score ? strength.color : "bg-white/10"
                       }`}
                     />
                   ))}
@@ -239,7 +240,7 @@ export default function LoginModal() {
             />
           )}
 
-          <button className="!mt-4 w-full rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3 font-bold text-white shadow-lg shadow-brand-200 transition hover:brightness-105 active:scale-[0.99]">
+          <button className="!mt-4 w-full rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3 font-bold text-white shadow-lg transition hover:brightness-105 active:scale-[0.99]">
             {mode === "login" ? "Login →" : "Create account →"}
           </button>
 
@@ -328,10 +329,10 @@ function Field({
     <div>
       <label className="mb-1 block text-xs font-semibold text-muted">{label}</label>
       <div
-        className={`flex items-center rounded-xl border bg-brand-50/40 px-3 transition focus-within:bg-white focus-within:ring-2 ${
+        className={`flex items-center rounded-xl border bg-white/5 px-3 transition focus-within:bg-navy-800 focus-within:ring-2 ${
           error
             ? "border-red-400 focus-within:ring-red-100"
-            : "border-brand-200 focus-within:border-brand-500 focus-within:ring-brand-200"
+            : "border-white/15 focus-within:border-brand-500 focus-within:ring-brand-200"
         }`}
       >
         {icon && <span className="flex text-muted">{icon}</span>}

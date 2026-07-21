@@ -1,14 +1,15 @@
 import { useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { CATEGORIES, PRODUCTS, type Category } from "../data";
+import { useCatalog } from "../context/catalog";
 import ProductCard from "../components/ProductCard";
 
 type Sort = "popular" | "priceLow" | "priceHigh" | "discount";
 
 export default function Shop() {
+  const { categories: CATEGORIES, products: PRODUCTS } = useCatalog();
   const [params, setParams] = useSearchParams();
   const q = params.get("q") ?? "";
-  const cat = (params.get("cat") as Category | null) ?? null;
+  const cat = params.get("cat");
   const [sort, setSort] = useState<Sort>("popular");
 
   const setQ = (v: string) => {
@@ -16,7 +17,7 @@ export default function Shop() {
     v ? next.set("q", v) : next.delete("q");
     setParams(next, { replace: true });
   };
-  const setCat = (v: Category | null) => {
+  const setCat = (v: string | null) => {
     const next = new URLSearchParams(params);
     v ? next.set("cat", v) : next.delete("cat");
     setParams(next, { replace: true });
@@ -51,7 +52,7 @@ export default function Shop() {
         list.sort((a, b) => b.reviews - a.reviews);
     }
     return list;
-  }, [q, cat, sort]);
+  }, [q, cat, sort, PRODUCTS]);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-8">
@@ -69,7 +70,7 @@ export default function Shop() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search within seafood…"
-            className="w-full rounded-xl border border-brand-100 bg-white py-2.5 pl-10 pr-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+            className="w-full rounded-xl border border-white/10 bg-navy-800 py-2.5 pl-10 pr-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
           />
           <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted">
             🔍
@@ -78,7 +79,7 @@ export default function Shop() {
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value as Sort)}
-          className="rounded-xl border border-brand-100 bg-white px-3 py-2.5 text-sm font-medium text-ink outline-none focus:border-brand-400"
+          className="rounded-xl border border-white/10 bg-navy-800 px-3 py-2.5 text-sm font-medium text-ink outline-none focus:border-brand-400"
         >
           <option value="popular">Most popular</option>
           <option value="priceLow">Price: low to high</option>
@@ -142,8 +143,8 @@ function Pill({
       onClick={onClick}
       className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition ${
         active
-          ? "bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow-md shadow-brand-200"
-          : "border border-brand-100 bg-white text-ink hover:border-brand-300"
+          ? "bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow-md"
+          : "border border-white/10 bg-navy-800 text-ink hover:border-brand-300"
       }`}
     >
       {children}

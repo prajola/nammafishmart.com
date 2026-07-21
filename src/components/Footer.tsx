@@ -15,7 +15,7 @@ const PAYMENTS = [
         <rect width="40" height="26" rx="5" fill="#fff" />
         <path d="M12 6l-4 14h3l4-14z" fill="#f9682f" />
         <path d="M17 6l-4 14h3l4-14z" fill="#5a9c3e" />
-        <text x="27" y="17" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="8" fontWeight="800" fill="#0c4a6e">UPI</text>
+        <text x="27" y="17" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="8" fontWeight="800" fill="#191740">UPI</text>
       </svg>
     ),
   },
@@ -45,7 +45,7 @@ const PAYMENTS = [
       <svg viewBox="0 0 40 26" className={CHIP} aria-hidden="true">
         <rect width="40" height="26" rx="5" fill="#fff" />
         <text x="20" y="16.5" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="8.5" fontWeight="800">
-          <tspan fill="#0c4a6e">Ru</tspan><tspan fill="#f9682f">Pay</tspan>
+          <tspan fill="#191740">Ru</tspan><tspan fill="#f9682f">Pay</tspan>
         </text>
       </svg>
     ),
@@ -55,7 +55,7 @@ const PAYMENTS = [
     icon: (
       <svg viewBox="0 0 40 26" className={CHIP} aria-hidden="true">
         <rect width="40" height="26" rx="5" fill="#fff" />
-        <text x="20" y="17" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="9" fontWeight="800" fill="#0c4a6e">₹ COD</text>
+        <text x="20" y="17" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="9" fontWeight="800" fill="#191740">₹ COD</text>
       </svg>
     ),
   },
@@ -117,7 +117,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="mt-16 border-t border-brand-100 bg-brand-900 text-brand-100">
+    <footer className="mt-16 border-t border-white/10 bg-gradient-to-b from-navy-800 to-navy-900 text-muted">
       {/* Newsletter */}
       <div className="sky-band">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 py-10 text-center md:flex-row md:justify-between md:text-left">
@@ -136,7 +136,7 @@ export default function Footer() {
               type="email"
               required
               placeholder="Enter your email"
-              className="flex-1 rounded-xl border border-brand-200 bg-white px-4 py-3 text-sm text-ink outline-none focus:ring-2 focus:ring-brand-300"
+              className="flex-1 rounded-xl border border-white/15 bg-navy-800 px-4 py-3 text-sm text-ink outline-none focus:ring-2 focus:ring-brand-300"
             />
             <button className="rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 px-5 py-3 font-bold text-white shadow-md">
               Subscribe
@@ -147,13 +147,20 @@ export default function Footer() {
 
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 md:grid-cols-4">
         <div className="col-span-2 md:col-span-1">
-          <div className="mb-3 flex items-center gap-2">
-            <LogoMark className="h-9 w-9" />
-            <span className="text-lg font-extrabold tracking-tight text-white">
-              Namma<span className="text-brand-300">Fish</span>Mart
+          <div className="mb-3 flex items-center gap-3">
+            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white/5 ring-1 ring-white/10">
+              <LogoMark className="h-11 w-11" />
+            </span>
+            <span className="leading-tight">
+              <span className="block text-xl font-extrabold tracking-tight text-white">
+                Namma<span className="text-brand-500">Fish</span>Mart
+              </span>
+              <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-300">
+                Fresh from the coast
+              </span>
             </span>
           </div>
-          <p className="text-sm text-brand-200">
+          <p className="text-sm text-muted">
             Fresh fish & seafood, cleaned and cut the way you like — delivered to
             your door across South India.
           </p>
@@ -178,9 +185,11 @@ export default function Footer() {
           title="Shop"
           links={[
             ["Fish", "/shop?cat=Fish"],
-            ["Prawns & Shrimp", "/shop?cat=Prawns"],
-            ["Crab", "/shop?cat=Crab"],
-            ["Combos", "/shop?cat=Combo"],
+            ["Sea Fish", "/shop?cat=SeaFish"],
+            ["River Fish", "/shop?cat=RiverFish"],
+            ["Prawns", "/shop?cat=Prawns"],
+            ["Crabs", "/shop?cat=Crabs"],
+            ["Dry Fish", "/shop?cat=DryFish"],
           ]}
         />
         <FooterCol
@@ -214,7 +223,10 @@ export default function Footer() {
 
       <div className="border-t border-white/10 px-4 py-5 text-center text-xs text-brand-300">
         © {new Date().getFullYear()} Namma Fish Mart. Freshness guaranteed or your
-        money back. · A demo storefront.
+        money back. · A demo storefront. ·{" "}
+        <Link to="/admin" className="hover:text-white">
+          Admin
+        </Link>
       </div>
     </footer>
   );

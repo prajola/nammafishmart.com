@@ -1,20 +1,30 @@
 @import "tailwindcss";
 
-/* ── Brand theme: white canvas + sky-blue splashes ───────────────── */
+/* ── Brand theme: warm cream canvas + coral splashes, navy ink
+   (matched to the logo: deep navy · coral accent · blush fish) ───── */
 @theme {
-  --color-brand-50: #f0f9ff;
-  --color-brand-100: #e0f2fe;
-  --color-brand-200: #bae6fd;
-  --color-brand-300: #7dd3fc;
-  --color-brand-400: #38bdf8;
-  --color-brand-500: #0ea5e9;
-  --color-brand-600: #0284c7;
-  --color-brand-700: #0369a1;
-  --color-brand-800: #075985;
-  --color-brand-900: #0c4a6e;
+  --color-brand-50: #fef3ef;
+  --color-brand-100: #fde3db;
+  --color-brand-200: #fbc8b9;
+  --color-brand-300: #f7a68f;
+  --color-brand-400: #f17c5c;
+  --color-brand-500: #e8593a;
+  --color-brand-600: #d4472a;
+  --color-brand-700: #b0371f;
+  --color-brand-800: #8d2f1d;
+  --color-brand-900: #73291b;
 
-  --color-ink: #0b1a2b;
-  --color-muted: #5b7186;
+  /* Deep navy from the logo — used for text and dark surfaces */
+  --color-navy-50: #eeedf5;
+  --color-navy-100: #d6d4e6;
+  --color-navy-500: #2b2960;
+  --color-navy-700: #1f1d47;
+  --color-navy-800: #191740;
+  --color-navy-900: #14122f;
+
+  /* Dark navy canvas (matched to the logo background) → text is now light */
+  --color-ink: #f2f0ff;
+  --color-muted: #a7a3ca;
 
   /* Modern product typography: Inter for UI/body, Space Grotesk for
      display headings. Both bundled locally (variable), so they always
@@ -23,9 +33,12 @@
     "Segoe UI", Roboto, sans-serif;
   --font-display: "Space Grotesk Variable", "Inter Variable", ui-sans-serif,
     system-ui, sans-serif;
+  /* Rounded, friendly display face for the hero headline */
+  --font-hero: "Baloo 2 Variable", "Space Grotesk Variable", ui-sans-serif,
+    system-ui, sans-serif;
 
-  --shadow-soft: 0 10px 30px -12px rgba(2, 132, 199, 0.25);
-  --shadow-card: 0 16px 40px -20px rgba(3, 105, 161, 0.35);
+  --shadow-soft: 0 10px 30px -12px rgba(0, 0, 0, 0.55);
+  --shadow-card: 0 18px 44px -20px rgba(0, 0, 0, 0.65);
 
   --animate-float: float 6s ease-in-out infinite;
 }
@@ -61,12 +74,13 @@
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
   scroll-behavior: smooth;
-  background: #ffffff;
+  /* Deep navy from the logo image */
+  background: #14122f;
 }
 
 body {
@@ -85,29 +99,32 @@ body {
   letter-spacing: -0.006em;
 }
 
-/* Display headings — Space Grotesk, tight tracking, balanced wrapping */
-h1, h2, h3 {
-  font-family: var(--font-display);
-  letter-spacing: -0.02em;
-  text-wrap: balance;
+/* Display headings — Space Grotesk, tight tracking, balanced wrapping.
+   In @layer base so Tailwind font utilities (e.g. `font-hero`) can override. */
+@layer base {
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  h1 { letter-spacing: -0.035em; }
 }
-h1 { letter-spacing: -0.035em; }
 
 .pop-in { animation: pop-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .toast-in { animation: toast-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
-/* Subtle sky texture used behind hero + section bands */
+/* Deep-navy band with coral glow behind hero + section bands (matches the logo) */
 .sky-band {
   background:
-    radial-gradient(60% 80% at 15% 0%, rgba(56, 189, 248, 0.18), transparent 60%),
-    radial-gradient(50% 70% at 95% 20%, rgba(14, 165, 233, 0.14), transparent 60%),
-    linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+    radial-gradient(60% 80% at 15% 0%, rgba(232, 89, 58, 0.18), transparent 60%),
+    radial-gradient(55% 70% at 95% 15%, rgba(241, 124, 92, 0.12), transparent 60%),
+    linear-gradient(180deg, #191740 0%, #14122f 100%);
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(20, 18, 47, 0.66);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 /* Hide scrollbar for horizontal category rails */

@@ -19,10 +19,10 @@ const SLIDES: Slide[] = [
     title: "Dry Fish Delicacies",
     offer: "Up to 22% OFF",
     cta: "Shop dried",
-    to: "/shop?cat=Dried",
+    to: "/shop?cat=DryFish",
     img: "/images/dried-anchovy.jpg",
-    grad: "from-amber-100 via-brand-50 to-white",
-    accent: "text-amber-600",
+    grad: "from-brand-900/60 via-navy-800 to-navy-900",
+    accent: "text-amber-400",
   },
   {
     eyebrow: "Fresh catch of the day",
@@ -31,8 +31,8 @@ const SLIDES: Slide[] = [
     cta: "Order now",
     to: "/product/tiger-prawns",
     img: "/images/tiger-prawns.jpg",
-    grad: "from-brand-100 via-brand-50 to-white",
-    accent: "text-brand-600",
+    grad: "from-navy-700 via-navy-800 to-navy-900",
+    accent: "text-amber-400",
   },
   {
     eyebrow: "Best-value combo",
@@ -41,8 +41,8 @@ const SLIDES: Slide[] = [
     cta: "Grab combo",
     to: "/product/family-feast",
     img: "/images/family-feast.jpg",
-    grad: "from-cyan-100 via-brand-50 to-white",
-    accent: "text-cyan-600",
+    grad: "from-navy-700 via-navy-800 to-navy-900",
+    accent: "text-amber-400",
   },
   {
     eyebrow: "Always on us",
@@ -51,8 +51,8 @@ const SLIDES: Slide[] = [
     cta: "Start shopping",
     to: "/shop",
     img: "/images/seer-steaks.jpg",
-    grad: "from-brand-200 via-brand-50 to-white",
-    accent: "text-brand-700",
+    grad: "from-brand-900/50 via-navy-800 to-navy-900",
+    accent: "text-amber-400",
   },
 ];
 
@@ -81,7 +81,7 @@ export default function HeroCarousel() {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-6">
       <div
-        className="relative overflow-hidden rounded-3xl border border-brand-100 shadow-[var(--shadow-card)]"
+        className="group relative overflow-hidden rounded-3xl border border-white/10 shadow-[var(--shadow-card)]"
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
@@ -98,9 +98,9 @@ export default function HeroCarousel() {
               {/* Text */}
               <div className="order-2 sm:order-1">
                 <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-700 shadow-sm ring-1 ring-brand-100">
-                  🐟 {s.eyebrow}
+                  {s.eyebrow}
                 </span>
-                <h2 className="mt-3 text-3xl font-extrabold leading-tight text-ink md:text-5xl">
+                <h2 className="mt-3 font-hero text-4xl font-extrabold leading-[1.05] text-ink md:text-6xl">
                   {s.title}
                 </h2>
                 <p className={`mt-2 text-2xl font-extrabold md:text-3xl ${s.accent}`}>
@@ -108,7 +108,7 @@ export default function HeroCarousel() {
                 </p>
                 <Link
                   to={s.to}
-                  className="mt-5 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 px-6 py-3 font-bold text-white shadow-lg shadow-brand-200 transition hover:scale-105"
+                  className="mt-5 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 px-6 py-3 font-bold text-white shadow-lg transition hover:scale-105"
                 >
                   {s.cta} →
                 </Link>
@@ -117,7 +117,6 @@ export default function HeroCarousel() {
               {/* Image */}
               <div className="order-1 flex justify-center sm:order-2">
                 <div className="relative">
-                  <div className="absolute -inset-3 rounded-full bg-white/50 blur-2xl" />
                   <img
                     src={asset(s.img)}
                     alt={s.title}
@@ -136,14 +135,14 @@ export default function HeroCarousel() {
         <button
           onClick={() => go(-1)}
           aria-label="Previous slide"
-          className="absolute left-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/80 text-ink shadow-md transition hover:bg-white sm:grid"
+          className="absolute left-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-navy-900 opacity-0 shadow-md transition hover:bg-white group-hover:opacity-100 sm:grid"
         >
           ‹
         </button>
         <button
           onClick={() => go(1)}
           aria-label="Next slide"
-          className="absolute right-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/80 text-ink shadow-md transition hover:bg-white sm:grid"
+          className="absolute right-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-navy-900 opacity-0 shadow-md transition hover:bg-white group-hover:opacity-100 sm:grid"
         >
           ›
         </button>
