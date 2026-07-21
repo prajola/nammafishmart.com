@@ -37,7 +37,7 @@ export default function FAQ() {
   return (
     <section className="mx-auto max-w-3xl px-4 py-14">
       <div className="mb-8 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-700 ring-1 ring-brand-100">
+        <span className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-700 ring-1 ring-brand-100">
           💬 Got questions?
         </span>
         <h2 className="mt-3 text-3xl font-extrabold text-ink md:text-4xl">
@@ -54,8 +54,8 @@ export default function FAQ() {
           return (
             <div
               key={i}
-              className={`overflow-hidden rounded-2xl border bg-white transition-colors ${
-                isOpen ? "border-brand-300 shadow-[var(--shadow-soft)]" : "border-brand-100"
+              className={`overflow-hidden rounded-2xl border bg-navy-800 transition-colors ${
+                isOpen ? "border-brand-300 shadow-[var(--shadow-soft)]" : "border-white/10"
               }`}
             >
               <button
@@ -68,7 +68,7 @@ export default function FAQ() {
                   className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-lg transition ${
                     isOpen
                       ? "rotate-45 bg-brand-600 text-white"
-                      : "bg-brand-50 text-brand-600"
+                      : "bg-white/5 text-brand-600"
                   }`}
                 >
                   +

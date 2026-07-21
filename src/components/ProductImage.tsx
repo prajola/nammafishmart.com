@@ -24,11 +24,11 @@ export default function ProductImage({
 
   return (
     <img
-      src={asset(`/images/${product.id}.jpg`)}
+      src={asset(product.img ?? `/images/${product.id}.jpg`)}
       alt={product.name}
       loading="lazy"
       onError={() => setFailed(true)}
-      className={`bg-brand-50 object-cover ${className}`}
+      className={`bg-white/5 object-cover ${className}`}
     />
   );
 }

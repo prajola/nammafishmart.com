@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -6,7 +6,6 @@ import CartDrawer from "./components/CartDrawer";
 import LoginModal from "./components/LoginModal";
 import WelcomePopup from "./components/WelcomePopup";
 import Toasts from "./components/Toasts";
-import Backdrop from "./components/Backdrop";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
@@ -17,17 +16,22 @@ import About from "./pages/About";
 import Sourcing from "./pages/Sourcing";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
+const Admin = lazy(() => import("./pages/admin/Admin"));
 
 function ScrollTop() {
   const { pathname } = useLocation();
-  useEffect(() => window.scrollTo({ top: 0 }), [pathname]);
+  // Block body (not a concise return) so the effect returns undefined — a
+  // concise `() => window.scrollTo(...)` returns scrollTo's value, which React
+  // then tries to invoke as the cleanup ("destroy is not a function") → blank.
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [pathname]);
   return null;
 }
 
 export default function App() {
   return (
     <div className="flex min-h-screen flex-col">
-      <Backdrop />
       {/* Announcement bar */}
       <div className="bg-gradient-to-r from-brand-600 to-brand-500 py-1.5 text-center text-xs font-semibold text-white">
         🚚 Free delivery over ₹599 · Same-day delivery · Freshness guaranteed
@@ -48,6 +52,20 @@ export default function App() {
           <Route path="/sourcing" element={<Sourcing />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
+          <Route
+            path="/admin"
+            element={
+              <Suspense
+                fallback={
+                  <div className="grid min-h-[60vh] place-items-center text-muted">
+                    Loading admin…
+                  </div>
+                }
+              >
+                <Admin />
+              </Suspense>
+            }
+          />
           <Route path="*" element={<Home />} />
         </Routes>
       </main>

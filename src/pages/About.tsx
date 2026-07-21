@@ -5,7 +5,7 @@ export default function About() {
     <div>
       <section className="sky-band">
         <div className="mx-auto max-w-5xl px-4 py-14 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-bold text-brand-700 shadow-sm ring-1 ring-brand-100">
+          <span className="inline-flex items-center gap-2 rounded-full bg-navy-800 px-3 py-1 text-xs font-bold text-brand-700 shadow-sm ring-1 ring-brand-100">
             🐟 Our story
           </span>
           <h1 className="mt-4 text-4xl font-extrabold text-ink md:text-5xl">
@@ -32,7 +32,7 @@ export default function About() {
           ].map(([n, l]) => (
             <div
               key={l}
-              className="rounded-2xl border border-brand-100 bg-white p-5 text-center shadow-[var(--shadow-soft)]"
+              className="rounded-2xl border border-white/10 bg-navy-800 p-5 text-center shadow-[var(--shadow-soft)]"
             >
               <p className="text-3xl font-extrabold text-brand-700">{n}</p>
               <p className="text-sm text-muted">{l}</p>
@@ -46,7 +46,7 @@ export default function About() {
             ["🔪", "Cleaned & cut for you", "Scaled, gutted, filleted or curry-cut exactly how you like — free, and hygienically packed."],
             ["🚚", "Same-day delivery", "Temperature-controlled delivery in hours, so it reaches you as fresh as the moment it was picked."],
           ].map(([i, t, d]) => (
-            <div key={t} className="rounded-2xl border border-brand-100 bg-white p-6 shadow-[var(--shadow-soft)]">
+            <div key={t} className="rounded-2xl border border-white/10 bg-navy-800 p-6 shadow-[var(--shadow-soft)]">
               <div className="text-4xl">{i}</div>
               <h3 className="mt-3 text-lg font-bold text-ink">{t}</h3>
               <p className="mt-1 text-sm text-muted">{d}</p>
@@ -63,7 +63,7 @@ export default function About() {
           </p>
           <Link
             to="/shop"
-            className="mt-5 inline-block rounded-xl bg-white px-6 py-3 font-bold text-brand-700 shadow-md transition hover:scale-105"
+            className="mt-5 inline-block rounded-xl bg-navy-800 px-6 py-3 font-bold text-brand-700 shadow-md transition hover:scale-105"
           >
             Shop the catch →
           </Link>
