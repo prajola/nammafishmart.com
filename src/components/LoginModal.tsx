@@ -151,23 +151,27 @@ export default function LoginModal() {
 
         {/* Form */}
         <form onSubmit={submit} noValidate className="space-y-3 p-6">
-          {/* Google OAuth */}
-          <button
-            type="button"
-            onClick={googleSignIn}
-            disabled={googleBusy}
-            className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/15 bg-white px-4 py-3 text-sm font-bold text-navy-900 transition hover:bg-white/90 disabled:opacity-60"
-          >
-            <GoogleIcon />
-            {googleBusy ? "Connecting…" : "Continue with Google"}
-          </button>
-          <div className="flex items-center gap-3 py-1">
-            <span className="h-px flex-1 bg-white/10" />
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-muted">
-              or
-            </span>
-            <span className="h-px flex-1 bg-white/10" />
-          </div>
+          {/* Google OAuth — only when Firebase is configured */}
+          {isFirebaseConfigured && (
+            <>
+              <button
+                type="button"
+                onClick={googleSignIn}
+                disabled={googleBusy}
+                className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/15 bg-white px-4 py-3 text-sm font-bold text-navy-900 transition hover:bg-white/90 disabled:opacity-60"
+              >
+                <GoogleIcon />
+                {googleBusy ? "Connecting…" : "Continue with Google"}
+              </button>
+              <div className="flex items-center gap-3 py-1">
+                <span className="h-px flex-1 bg-white/10" />
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-muted">
+                  or
+                </span>
+                <span className="h-px flex-1 bg-white/10" />
+              </div>
+            </>
+          )}
 
           {mode === "signup" && (
             <Field
