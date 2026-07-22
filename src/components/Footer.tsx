@@ -205,7 +205,7 @@ export default function Footer() {
           <h4 className="mb-3 font-bold text-white">Get in touch</h4>
           <ul className="space-y-2 text-sm text-brand-200">
             <li>📞 1800-FRESH-FISH</li>
-            <li>✉️ care@nammafishmart.com</li>
+            <li>✉️ nammafishmart@gmail.com</li>
             <li>🕑 Daily 6 AM – 10 PM</li>
           </ul>
           <p className="mt-3 text-[11px] font-semibold uppercase tracking-wider text-brand-300">

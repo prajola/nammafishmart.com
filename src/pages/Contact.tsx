@@ -47,7 +47,7 @@ export default function Contact() {
         <div className="space-y-4">
           {[
             ["📞", "Call us", "1800-FRESH-FISH", "Daily 6 AM – 10 PM"],
-            ["✉️", "Email", "care@nammafishmart.com", "We reply within a few hours"],
+            ["✉️", "Email", "nammafishmart@gmail.com", "We reply within a few hours"],
             ["💬", "WhatsApp", "+91 90000 00000", "Chat for quick help"],
             ["📍", "Head office", "Marina Bay, Chennai", "Tamil Nadu, India"],
           ].map(([i, t, a, s]) => (
