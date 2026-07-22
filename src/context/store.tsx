@@ -8,6 +8,7 @@ import {
 } from "react";
 import { COUPONS, type Product } from "../data";
 import { productById } from "../lib/catalog";
+import { firebaseSignOut } from "../lib/firebase";
 
 /* ── Types ───────────────────────────────────────────────────────── */
 export interface User {
@@ -223,6 +224,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   }
   function logout() {
     setUser(null);
+    void firebaseSignOut(); // best-effort; no-op when Firebase isn't configured
     toast("You've been logged out.", "info");
   }
 
