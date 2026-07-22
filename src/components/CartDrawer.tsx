@@ -10,7 +10,7 @@ export default function CartDrawer() {
 
   return (
     <div
-      className={`fixed inset-0 z-[80] ${cartOpen ? "" : "pointer-events-none"}`}
+      className={`fixed inset-0 z-[80] overflow-hidden ${cartOpen ? "" : "pointer-events-none"}`}
       aria-hidden={!cartOpen}
     >
       <div
