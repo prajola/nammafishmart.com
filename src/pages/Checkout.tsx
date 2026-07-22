@@ -10,10 +10,10 @@ const SLOTS = [
   "Tomorrow · 7–9 AM",
   "Tomorrow · 11 AM–1 PM",
 ];
-const PAYMENTS = [
-  ["cod", "💵", "Cash / UPI on delivery"],
-  ["upi", "📱", "UPI (GPay / PhonePe)"],
-  ["card", "💳", "Credit / Debit card"],
+const PAYMENTS: [string, string, string, boolean][] = [
+  ["cod", "💵", "Cash / UPI on delivery", false],
+  ["upi", "📱", "UPI (GPay / PhonePe)", true],
+  ["card", "💳", "Credit / Debit card", true],
 ];
 
 export default function Checkout() {
@@ -173,20 +173,29 @@ export default function Checkout() {
           {/* Payment */}
           <Card title="💳 Payment method">
             <div className="space-y-2">
-              {PAYMENTS.map(([id, icon, label]) => (
+              {PAYMENTS.map(([id, icon, label, soon]) => (
                 <button
                   key={id}
                   type="button"
-                  onClick={() => setPay(id)}
+                  disabled={soon}
+                  onClick={() => !soon && setPay(id)}
                   className={`flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left text-sm font-semibold transition ${
-                    pay === id
-                      ? "border-brand-500 bg-white/5 ring-2 ring-brand-200"
-                      : "border-white/10 hover:border-brand-300"
+                    soon
+                      ? "cursor-not-allowed border-white/10 opacity-60"
+                      : pay === id
+                        ? "border-brand-500 bg-white/5 ring-2 ring-brand-200"
+                        : "border-white/10 hover:border-brand-300"
                   }`}
                 >
                   <span className="text-xl">{icon}</span>
                   <span className="text-ink">{label}</span>
-                  <span className="ml-auto">{pay === id ? "🔵" : "⚪"}</span>
+                  {soon ? (
+                    <span className="ml-auto rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-muted">
+                      Coming soon
+                    </span>
+                  ) : (
+                    <span className="ml-auto">{pay === id ? "🔵" : "⚪"}</span>
+                  )}
                 </button>
               ))}
             </div>
