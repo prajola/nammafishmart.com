@@ -145,7 +145,7 @@ export default function Header() {
                   <circle cx="12" cy="8" r="4" />
                   <path d="M4 21c0-4 3.6-6 8-6s8 2 8 6" />
                 </svg>
-                Sign in
+                <span className="hidden sm:inline">Sign in</span>
               </button>
             )}
           </div>
@@ -171,7 +171,7 @@ export default function Header() {
               <circle cx="18" cy="21" r="1.6" />
               <path d="M2 3h2.2l2.3 12.3a1.6 1.6 0 0 0 1.6 1.3h8.7a1.6 1.6 0 0 0 1.6-1.3L21 7H5.3" />
             </svg>
-            Cart
+            <span className="hidden sm:inline">Cart</span>
             <span className="grid h-6 min-w-6 place-items-center rounded-full bg-white px-1.5 text-xs font-extrabold text-brand-600">
               {cartCount}
             </span>
