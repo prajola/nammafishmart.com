@@ -11,18 +11,28 @@ import {
   type CatalogProduct,
 } from "../../lib/catalog";
 import { money } from "../../data";
-import { isAuthed, signIn, signOut, usesEmailLogin } from "../../lib/adminAuth";
+import {
+  isAuthed,
+  signIn,
+  signOut,
+  usesEmailLogin,
+  isRecoverySession,
+  updateMyPassword,
+} from "../../lib/adminAuth";
 import ProductImage from "../../components/ProductImage";
 import ProductEditor from "./ProductEditor";
 import CategoryEditor from "./CategoryEditor";
+import UsersPanel from "./UsersPanel";
 
 export default function Admin() {
   const [authed, setAuthed] = useState<boolean | null>(null);
+  const [recovery, setRecovery] = useState(isRecoverySession());
 
   useEffect(() => {
     isAuthed().then(setAuthed);
   }, []);
 
+  if (recovery) return <RecoveryForm onDone={() => setRecovery(false)} />;
   if (authed === null) {
     return (
       <div className="grid min-h-[60vh] place-items-center text-muted">Loading…</div>
@@ -30,6 +40,81 @@ export default function Admin() {
   }
   if (!authed) return <Login onDone={() => setAuthed(true)} />;
   return <Dashboard onSignOut={() => setAuthed(false)} />;
+}
+
+// ─── Password recovery (from the reset email link) ─────────────────────────
+function RecoveryForm({ onDone }: { onDone: () => void }) {
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [err, setErr] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const [done, setDone] = useState(false);
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setErr(null);
+    if (password.length < 6) return setErr("Password must be at least 6 characters.");
+    if (password !== confirm) return setErr("Passwords don't match.");
+    setBusy(true);
+    try {
+      await updateMyPassword(password);
+      setDone(true);
+    } catch (e) {
+      setErr(e instanceof Error ? e.message : "Could not update password");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const field =
+    "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-ink outline-none focus:border-brand-400";
+
+  return (
+    <div className="mx-auto grid min-h-[70vh] max-w-md place-items-center px-4">
+      <div className="w-full rounded-2xl border border-white/10 bg-navy-800 p-6 shadow-xl">
+        <h1 className="text-2xl font-extrabold text-ink">Set a new password</h1>
+        {done ? (
+          <>
+            <p className="mt-2 text-sm text-green-400">
+              Password updated. You can now sign in.
+            </p>
+            <button
+              onClick={onDone}
+              className="mt-5 w-full rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3 font-bold text-white"
+            >
+              Continue to sign in
+            </button>
+          </>
+        ) : (
+          <form onSubmit={submit} className="mt-5 space-y-3">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="New password"
+              className={field}
+              autoComplete="new-password"
+            />
+            <input
+              type="password"
+              value={confirm}
+              onChange={(e) => setConfirm(e.target.value)}
+              placeholder="Confirm new password"
+              className={field}
+              autoComplete="new-password"
+            />
+            {err && <p className="text-sm text-red-400">{err}</p>}
+            <button
+              disabled={busy}
+              className="w-full rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3 font-bold text-white disabled:opacity-60"
+            >
+              {busy ? "Saving…" : "Update password"}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  );
 }
 
 // ─── Login ────────────────────────────────────────────────────────────────
@@ -112,7 +197,9 @@ function Login({ onDone }: { onDone: () => void }) {
 // ─── Dashboard ──────────────────────────────────────────────────────────────
 function Dashboard({ onSignOut }: { onSignOut: () => void }) {
   const { products, categories } = useCatalog();
-  const [tab, setTab] = useState<"products" | "categories">("products");
+  const [tab, setTab] = useState<"products" | "categories" | "users">(
+    "products"
+  );
   const [editProduct, setEditProduct] = useState<CatalogProduct | null>(null);
   const [newProduct, setNewProduct] = useState(false);
   const [editCat, setEditCat] = useState<CatalogCategory | null>(null);
@@ -168,7 +255,7 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
 
       {/* Tabs */}
       <div className="mt-6 flex gap-2 border-b border-white/10">
-        {(["products", "categories"] as const).map((t) => (
+        {(["products", "categories", "users"] as const).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -178,12 +265,16 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
                 : "border-transparent text-muted hover:text-ink"
             }`}
           >
-            {t} ({t === "products" ? products.length : categories.length})
+            {t}
+            {t === "products" && ` (${products.length})`}
+            {t === "categories" && ` (${categories.length})`}
           </button>
         ))}
       </div>
 
-      {tab === "products" ? (
+      {tab === "users" ? (
+        <UsersPanel />
+      ) : tab === "products" ? (
         <section className="mt-5">
           <div className="mb-4 flex justify-end">
             <button
