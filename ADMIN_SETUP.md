@@ -100,9 +100,51 @@ create policy "admin manage images" on storage.objects
   for update to authenticated using (bucket_id = 'catalog-images');
 ```
 
-### 4. Create your admin user
-**Authentication → Users → Add user** → set an email + password. Only users you
-create here can sign in to `/admin` and write to the catalog.
+### 3b. Create the admins allow-list (who can manage the store)
+Run this once. Being an admin = having your email in the `admins` table. Only
+existing admins can edit it, so it's self-securing after you seed the first row.
+
+```sql
+create table if not exists admins (
+  email      text primary key,
+  invited_by text,
+  created_at timestamptz default now()
+);
+alter table admins enable row level security;
+
+-- Any signed-in user may read the list (needed by the app to check membership).
+create policy "read admins" on admins for select to authenticated using (true);
+-- Only existing admins may add/remove admins.
+create policy "admins manage admins" on admins for all to authenticated
+  using (lower(auth.jwt() ->> 'email') in (select email from admins))
+  with check (lower(auth.jwt() ->> 'email') in (select email from admins));
+```
+
+Then tie catalog writes to admins too (replace the earlier `authenticated`
+policies if you want stricter control) — optional but recommended:
+
+```sql
+-- only admins (not just any signed-in user) can write the catalog
+drop policy if exists "admin write categories" on categories;
+drop policy if exists "admin write products"   on products;
+create policy "admin write categories" on categories for all to authenticated
+  using (lower(auth.jwt() ->> 'email') in (select email from admins))
+  with check (lower(auth.jwt() ->> 'email') in (select email from admins));
+create policy "admin write products" on products for all to authenticated
+  using (lower(auth.jwt() ->> 'email') in (select email from admins))
+  with check (lower(auth.jwt() ->> 'email') in (select email from admins));
+```
+
+### 4. Create your first admin user + seed the allow-list
+**Authentication → Users → Add user** → set an email + password. Then bootstrap
+that email into the allow-list (SQL Editor):
+
+```sql
+insert into admins (email) values ('you@email.com');  -- your login email, lowercase
+```
+
+From now on you invite everyone else from the **Users** tab in `/admin` — no SQL
+needed. A signed-in Supabase user who is **not** on the allow-list is denied.
 
 ### 5. Set the environment variables
 Copy `.env.example` to `.env` (local) and add the same vars to your hosting
@@ -119,6 +161,31 @@ Rebuild / redeploy. The admin banner now shows **"Connected to Supabase."**
 Sign in to `/admin` and click **"Import demo catalog into Supabase"** to populate
 the tables with the current products & categories. After that, manage everything
 from the portal — every save is live in production for all visitors.
+
+---
+
+## Managing admins (the Users tab)
+
+Once Supabase is configured, `/admin` gets a **Users** tab where any admin can:
+
+- **Invite an admin** — enter an email → they're added to the allow-list and
+  emailed a sign-in link (their account is created if new). They set their own
+  password via the reset flow.
+- **Reset password** — sends the standard Supabase password-reset email to that
+  user. Clicking the link brings them back to `/admin` with a "Set a new
+  password" screen.
+- **Revoke** — removes an admin from the allow-list (you can't revoke yourself).
+
+All of this uses **client-safe** Supabase Auth calls — the browser never holds a
+privileged key.
+
+### Optional: admin-set passwords / formal invites (service_role)
+Directly *setting* another user's password to a specific value, or issuing a
+formal `inviteUserByEmail`, requires the **service_role** key, which must never
+be in frontend code. If you need that, add a **Supabase Edge Function** that
+holds the service_role secret and verifies the caller is an admin before calling
+`supabase.auth.admin.*`. The email-based reset flow above covers the common case
+without any server.
 
 ---
 

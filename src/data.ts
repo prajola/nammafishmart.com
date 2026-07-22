@@ -39,14 +39,7 @@ export const CATEGORIES: {
   { key: "DryFish", label: "Dry Fish", emoji: "🌾", img: "/images/dried-anchovy.jpg" },
 ];
 
-export const CITIES = [
-  "Chennai",
-  "Bengaluru",
-  "Hyderabad",
-  "Coimbatore",
-  "Madurai",
-  "Kochi",
-];
+export const CITIES = ["Bengaluru", "Nellore", "Chennai"];
 
 export const COUPONS: Record<
   string,
