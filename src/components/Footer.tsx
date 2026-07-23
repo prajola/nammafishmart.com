@@ -148,8 +148,8 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 md:grid-cols-4">
         <div className="col-span-2 md:col-span-1">
           <div className="mb-3 flex items-center gap-3">
-            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white/5 ring-1 ring-white/10">
-              <LogoMark className="h-11 w-11" />
+            <span className="grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 shadow-sm">
+              <LogoMark className="h-full w-full" />
             </span>
             <span className="leading-tight">
               <span className="block text-xl font-extrabold tracking-tight text-white">

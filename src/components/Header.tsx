@@ -17,7 +17,9 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3">
         {/* Logo */}
         <Link to="/" className="flex shrink-0 items-center gap-2">
-          <LogoMark className="h-10 w-10" />
+          <span className="grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-xl bg-white p-1 shadow-sm">
+            <LogoMark className="h-full w-full" />
+          </span>
           <span className="leading-tight">
             <span className="block text-lg font-extrabold tracking-tight text-ink">
               Namma<span className="text-brand-500">Fish</span>Mart
