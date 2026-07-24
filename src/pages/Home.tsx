@@ -35,12 +35,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Royal Prime membership strip */}
+      {/* Namma Prime membership strip */}
       <section className="mx-auto max-w-7xl px-4 pt-6">
         <div className="flex flex-col items-center gap-4 rounded-3xl bg-gradient-to-r from-brand-700 via-brand-600 to-brand-500 p-5 text-white shadow-lg sm:flex-row sm:p-6">
           <div className="flex shrink-0 items-center gap-2 rounded-2xl bg-navy-800 px-4 py-2.5 shadow-md">
             <span className="text-lg font-extrabold tracking-tight text-brand-700">
-              Royal <span className="text-brand-500">Prime</span> 👑
+              Namma<span className="text-brand-500">Prime</span> 👑
             </span>
           </div>
           <p className="flex-1 text-center font-semibold sm:text-left">

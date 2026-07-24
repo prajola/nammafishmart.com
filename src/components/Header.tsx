@@ -19,11 +19,11 @@ export default function Header() {
         <Link to="/" className="flex shrink-0 items-center gap-2">
           <LogoMark className="h-10 w-10" />
           <span className="leading-tight">
-            <span className="block text-lg font-extrabold tracking-tight text-ink">
-              Royal <span className="text-brand-500">Kai</span>
+            <span className="block text-xl font-extrabold tracking-tight text-ink">
+              Namma
             </span>
-            <span className="hidden text-[10px] font-semibold uppercase tracking-[0.2em] text-muted sm:block">
-              Fresh from the coast
+            <span className="block text-[10px] font-bold uppercase tracking-[0.28em] text-brand-500">
+              Fish Mart
             </span>
           </span>
         </Link>

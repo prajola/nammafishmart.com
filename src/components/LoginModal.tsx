@@ -128,7 +128,7 @@ export default function LoginModal() {
           <p className="text-sm text-muted">
             {mode === "login"
               ? "Login to track orders & unlock fresh-catch offers."
-              : "Join Royal Kai — it takes 20 seconds."}
+              : "Join Namma Fish Mart — it takes 20 seconds."}
           </p>
 
           {/* Tab switch */}
@@ -289,7 +289,7 @@ export default function LoginModal() {
           </button>
 
           <p className="pt-1 text-center text-sm text-muted">
-            {mode === "login" ? "New to Royal Kai?" : "Already have an account?"}{" "}
+            {mode === "login" ? "New to Namma Fish Mart?" : "Already have an account?"}{" "}
             <button
               type="button"
               onClick={() => switchMode(mode === "login" ? "signup" : "login")}

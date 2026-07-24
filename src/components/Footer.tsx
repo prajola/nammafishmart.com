@@ -153,10 +153,10 @@ export default function Footer() {
             </span>
             <span className="leading-tight">
               <span className="block text-xl font-extrabold tracking-tight text-ink">
-                Royal <span className="text-brand-500">Kai</span>
+                Namma
               </span>
-              <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-500">
-                Fresh from the coast
+              <span className="block text-[10px] font-bold uppercase tracking-[0.28em] text-brand-500">
+                Fish Mart
               </span>
             </span>
           </div>
@@ -222,7 +222,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-brand-100 px-4 py-5 text-center text-xs text-muted">
-        © {new Date().getFullYear()} Royal Kai. Freshness guaranteed or your
+        © {new Date().getFullYear()} Namma Fish Mart. Freshness guaranteed or your
         money back. · A demo storefront. ·{" "}
         <Link to="/admin" className="hover:text-brand-600">
           Admin
