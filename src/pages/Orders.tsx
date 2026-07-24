@@ -50,9 +50,9 @@ export default function Orders() {
           return (
             <div
               key={o.id}
-              className="overflow-hidden rounded-2xl border border-white/10 bg-navy-800 shadow-[var(--shadow-soft)]"
+              className="overflow-hidden rounded-2xl border border-brand-100 bg-navy-800 shadow-[var(--shadow-soft)]"
             >
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 bg-white/5 px-5 py-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-brand-100 bg-brand-50 px-5 py-3">
                 <div>
                   <p className="font-extrabold text-ink">Order {o.id}</p>
                   <p className="text-xs text-muted">
@@ -119,7 +119,7 @@ export default function Orders() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-3 flex items-center justify-between border-t border-dashed border-white/15 pt-3">
+                <div className="mt-3 flex items-center justify-between border-t border-dashed border-brand-200 pt-3">
                   <span className="text-sm text-muted">
                     Paid {o.coupon ? `· ${o.coupon} applied` : ""}
                   </span>

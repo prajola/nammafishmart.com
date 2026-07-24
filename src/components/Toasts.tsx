@@ -15,7 +15,7 @@ export default function Toasts() {
         <button
           key={t.id}
           onClick={() => dismissToast(t.id)}
-          className="toast-in pointer-events-auto flex items-center gap-3 rounded-xl border border-white/10 bg-navy-800/95 px-4 py-3 text-left shadow-[var(--shadow-card)] backdrop-blur"
+          className="toast-in pointer-events-auto flex items-center gap-3 rounded-xl border border-brand-100 bg-navy-800/95 px-4 py-3 text-left shadow-[var(--shadow-card)] backdrop-blur"
         >
           <span className="text-lg">{ICONS[t.type]}</span>
           <span className="text-sm font-medium text-ink">{t.message}</span>

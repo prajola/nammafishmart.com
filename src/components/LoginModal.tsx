@@ -108,18 +108,18 @@ export default function LoginModal() {
 
   return (
     <div className="fixed inset-0 z-[90] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-navy-900/75 backdrop-blur-md" onClick={close} />
-      <div className="pop-in relative w-full max-w-md overflow-hidden rounded-3xl border border-white/10 bg-navy-800 shadow-2xl">
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-md" onClick={close} />
+      <div className="pop-in relative w-full max-w-md overflow-hidden rounded-3xl border border-brand-100 bg-navy-800 shadow-2xl">
         {/* Header band */}
         <div className="sky-band relative px-6 pt-7 pb-6">
           <button
             onClick={close}
-            className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full bg-white/10 text-ink transition hover:bg-white/20"
+            className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full bg-brand-50 text-ink transition hover:bg-brand-100"
             aria-label="Close"
           >
             ✕
           </button>
-          <span className="grid h-14 w-14 place-items-center rounded-2xl bg-white/5 shadow-md ring-1 ring-white/10">
+          <span className="grid h-14 w-14 place-items-center rounded-2xl bg-brand-50 shadow-md ring-1 ring-brand-200">
             <LogoMark className="h-11 w-11" />
           </span>
           <h2 className="mt-3 text-2xl font-extrabold text-ink">
@@ -132,7 +132,7 @@ export default function LoginModal() {
           </p>
 
           {/* Tab switch */}
-          <div className="mt-4 flex rounded-xl border border-white/10 bg-white/5 p-1 text-sm font-bold">
+          <div className="mt-4 flex rounded-xl border border-brand-100 bg-brand-50 p-1 text-sm font-bold">
             {(["login", "signup"] as Mode[]).map((m) => (
               <button
                 key={m}
@@ -158,17 +158,17 @@ export default function LoginModal() {
                 type="button"
                 onClick={googleSignIn}
                 disabled={googleBusy}
-                className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/15 bg-white px-4 py-3 text-sm font-bold text-navy-900 transition hover:bg-white/90 disabled:opacity-60"
+                className="flex w-full items-center justify-center gap-3 rounded-xl border border-brand-200 bg-white px-4 py-3 text-sm font-bold text-ink transition hover:bg-white/90 disabled:opacity-60"
               >
                 <GoogleIcon />
                 {googleBusy ? "Connecting…" : "Continue with Google"}
               </button>
               <div className="flex items-center gap-3 py-1">
-                <span className="h-px flex-1 bg-white/10" />
+                <span className="h-px flex-1 bg-brand-50" />
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-muted">
                   or
                 </span>
-                <span className="h-px flex-1 bg-white/10" />
+                <span className="h-px flex-1 bg-brand-50" />
               </div>
             </>
           )}
@@ -217,10 +217,10 @@ export default function LoginModal() {
               )}
             </label>
             <div
-              className={`flex items-center rounded-xl border bg-white/5 px-3 transition focus-within:bg-navy-800 focus-within:ring-2 ${
+              className={`flex items-center rounded-xl border bg-brand-50 px-3 transition focus-within:bg-navy-800 focus-within:ring-2 ${
                 errors.password
                   ? "border-red-400 focus-within:ring-red-100"
-                  : "border-white/15 focus-within:border-brand-500 focus-within:ring-brand-200"
+                  : "border-brand-200 focus-within:border-brand-500 focus-within:ring-brand-200"
               }`}
             >
               <span className="flex text-muted">
@@ -257,7 +257,7 @@ export default function LoginModal() {
                     <span
                       key={i}
                       className={`h-1.5 flex-1 rounded-full ${
-                        i < strength.score ? strength.color : "bg-white/10"
+                        i < strength.score ? strength.color : "bg-brand-50"
                       }`}
                     />
                   ))}
@@ -393,10 +393,10 @@ function Field({
     <div>
       <label className="mb-1 block text-xs font-semibold text-muted">{label}</label>
       <div
-        className={`flex items-center rounded-xl border bg-white/5 px-3 transition focus-within:bg-navy-800 focus-within:ring-2 ${
+        className={`flex items-center rounded-xl border bg-brand-50 px-3 transition focus-within:bg-navy-800 focus-within:ring-2 ${
           error
             ? "border-red-400 focus-within:ring-red-100"
-            : "border-white/15 focus-within:border-brand-500 focus-within:ring-brand-200"
+            : "border-brand-200 focus-within:border-brand-500 focus-within:ring-brand-200"
         }`}
       >
         {icon && <span className="flex text-muted">{icon}</span>}

@@ -67,11 +67,11 @@ function RecoveryForm({ onDone }: { onDone: () => void }) {
   }
 
   const field =
-    "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-ink outline-none focus:border-brand-400";
+    "w-full rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm text-ink outline-none focus:border-brand-400";
 
   return (
     <div className="mx-auto grid min-h-[70vh] max-w-md place-items-center px-4">
-      <div className="w-full rounded-2xl border border-white/10 bg-navy-800 p-6 shadow-xl">
+      <div className="w-full rounded-2xl border border-brand-100 bg-navy-800 p-6 shadow-xl">
         <h1 className="text-2xl font-extrabold text-ink">Set a new password</h1>
         {done ? (
           <>
@@ -139,13 +139,13 @@ function Login({ onDone }: { onDone: () => void }) {
   }
 
   const field =
-    "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-ink outline-none focus:border-brand-400";
+    "w-full rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm text-ink outline-none focus:border-brand-400";
 
   return (
     <div className="mx-auto grid min-h-[70vh] max-w-md place-items-center px-4">
       <form
         onSubmit={submit}
-        className="w-full rounded-2xl border border-white/10 bg-navy-800 p-6 shadow-xl"
+        className="w-full rounded-2xl border border-brand-100 bg-navy-800 p-6 shadow-xl"
       >
         <h1 className="text-2xl font-extrabold text-ink">Admin sign in</h1>
         <p className="mt-1 text-sm text-muted">
@@ -237,7 +237,7 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
         <div className="flex items-center gap-2">
           <Link
             to="/"
-            className="rounded-xl border border-white/15 px-4 py-2 text-sm font-bold text-ink hover:bg-white/10"
+            className="rounded-xl border border-brand-200 px-4 py-2 text-sm font-bold text-ink hover:bg-brand-50"
           >
             View store
           </Link>
@@ -246,7 +246,7 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
               await signOut();
               onSignOut();
             }}
-            className="rounded-xl border border-white/15 px-4 py-2 text-sm font-bold text-ink hover:bg-white/10"
+            className="rounded-xl border border-brand-200 px-4 py-2 text-sm font-bold text-ink hover:bg-brand-50"
           >
             Sign out
           </button>
@@ -254,7 +254,7 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
       </div>
 
       {/* Tabs */}
-      <div className="mt-6 flex gap-2 border-b border-white/10">
+      <div className="mt-6 flex gap-2 border-b border-brand-100">
         {(["products", "categories", "users"] as const).map((t) => (
           <button
             key={t}
@@ -284,11 +284,11 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
               + New product
             </button>
           </div>
-          <div className="overflow-hidden rounded-2xl border border-white/10">
+          <div className="overflow-hidden rounded-2xl border border-brand-100">
             {products.map((p) => (
               <div
                 key={p.id}
-                className="flex items-center gap-3 border-b border-white/10 bg-navy-800 p-3 last:border-0"
+                className="flex items-center gap-3 border-b border-brand-100 bg-navy-800 p-3 last:border-0"
               >
                 <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg">
                   <ProductImage product={p} className="h-12 w-12" />
@@ -302,7 +302,7 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
                 </div>
                 <button
                   onClick={() => setEditProduct(p)}
-                  className="rounded-lg border border-white/15 px-3 py-1.5 text-xs font-bold text-ink hover:bg-white/10"
+                  className="rounded-lg border border-brand-200 px-3 py-1.5 text-xs font-bold text-ink hover:bg-brand-50"
                 >
                   Edit
                 </button>
@@ -335,9 +335,9 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
             {categories.map((c) => (
               <div
                 key={c.key}
-                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-navy-800 p-3"
+                className="flex items-center gap-3 rounded-2xl border border-brand-100 bg-navy-800 p-3"
               >
-                <div className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-full border border-white/10 bg-white/5">
+                <div className="grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-full border border-brand-100 bg-brand-50">
                   {c.img ? (
                     <img
                       src={
@@ -363,7 +363,7 @@ function Dashboard({ onSignOut }: { onSignOut: () => void }) {
                 </div>
                 <button
                   onClick={() => setEditCat(c)}
-                  className="rounded-lg border border-white/15 px-2.5 py-1.5 text-xs font-bold text-ink hover:bg-white/10"
+                  className="rounded-lg border border-brand-200 px-2.5 py-1.5 text-xs font-bold text-ink hover:bg-brand-50"
                 >
                   Edit
                 </button>

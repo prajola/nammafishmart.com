@@ -89,7 +89,7 @@ export default function SearchBox({
           onFocus={() => q && setOpen(true)}
           onKeyDown={onKey}
           placeholder={placeholder}
-          className="w-full rounded-xl border border-white/15 bg-white/10 py-2.5 pl-10 pr-9 text-sm text-ink placeholder:text-muted outline-none transition focus:border-brand-400 focus:bg-white/[0.14] focus:ring-2 focus:ring-brand-400/30"
+          className="w-full rounded-xl border border-brand-200 bg-brand-50 py-2.5 pl-10 pr-9 text-sm text-ink placeholder:text-muted outline-none transition focus:border-brand-400 focus:bg-brand-100 focus:ring-2 focus:ring-brand-400/30"
           aria-label="Search products"
         />
         {/* clickable magnifier — submits */}
@@ -117,7 +117,7 @@ export default function SearchBox({
 
       {/* Dropdown */}
       {open && q.trim() && (
-        <div className="pop-in absolute left-0 right-0 top-12 z-[60] overflow-hidden rounded-2xl border border-white/10 bg-navy-800 shadow-2xl">
+        <div className="pop-in absolute left-0 right-0 top-12 z-[60] overflow-hidden rounded-2xl border border-brand-100 bg-navy-800 shadow-2xl">
           {matches.length === 0 ? (
             <div className="p-4 text-center text-sm text-muted">
               No matches for “{q}”. Try “prawns”, “crab” or “seer”.
@@ -130,7 +130,7 @@ export default function SearchBox({
                     onMouseEnter={() => setActive(i)}
                     onClick={() => goToProduct(p.id)}
                     className={`flex w-full items-center gap-3 px-3 py-2 text-left ${
-                      active === i ? "bg-white/5" : "hover:bg-white/10"
+                      active === i ? "bg-brand-50" : "hover:bg-brand-50"
                     }`}
                   >
                     <ProductImage
@@ -163,10 +163,10 @@ export default function SearchBox({
           )}
           <button
             onClick={() => goToShop(q)}
-            className={`block w-full border-t border-white/10 px-3 py-2.5 text-center text-sm font-bold ${
+            className={`block w-full border-t border-brand-100 px-3 py-2.5 text-center text-sm font-bold ${
               active === matches.length && matches.length
-                ? "bg-white/5 text-brand-700"
-                : "text-brand-600 hover:bg-white/10"
+                ? "bg-brand-50 text-brand-700"
+                : "text-brand-600 hover:bg-brand-50"
             }`}
           >
             See all results for “{q}” →

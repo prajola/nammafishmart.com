@@ -32,7 +32,7 @@ export default function About() {
           ].map(([n, l]) => (
             <div
               key={l}
-              className="rounded-2xl border border-white/10 bg-navy-800 p-5 text-center shadow-[var(--shadow-soft)]"
+              className="rounded-2xl border border-brand-100 bg-navy-800 p-5 text-center shadow-[var(--shadow-soft)]"
             >
               <p className="text-3xl font-extrabold text-brand-700">{n}</p>
               <p className="text-sm text-muted">{l}</p>
@@ -46,7 +46,7 @@ export default function About() {
             ["🔪", "Cleaned & cut for you", "Scaled, gutted, filleted or curry-cut exactly how you like — free, and hygienically packed."],
             ["🚚", "Same-day delivery", "Temperature-controlled delivery in hours, so it reaches you as fresh as the moment it was picked."],
           ].map(([i, t, d]) => (
-            <div key={t} className="rounded-2xl border border-white/10 bg-navy-800 p-6 shadow-[var(--shadow-soft)]">
+            <div key={t} className="rounded-2xl border border-brand-100 bg-navy-800 p-6 shadow-[var(--shadow-soft)]">
               <div className="text-4xl">{i}</div>
               <h3 className="mt-3 text-lg font-bold text-ink">{t}</h3>
               <p className="mt-1 text-sm text-muted">{d}</p>

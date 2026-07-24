@@ -94,7 +94,7 @@ export default function Home() {
           ].map(([i, t, s]) => (
             <div
               key={t}
-              className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4"
+              className="flex items-center gap-3 rounded-2xl border border-brand-100 bg-brand-50 p-4"
             >
               <span className="text-3xl">{i}</span>
               <div>

@@ -30,14 +30,14 @@ export function Logo({
             dark ? "text-white" : "text-ink"
           }`}
         >
-          Namma<span className="text-brand-500">Fish</span>Mart
+          Namma
         </span>
         <span
           className={`hidden text-[10px] font-semibold uppercase tracking-[0.2em] sm:block ${
             dark ? "text-brand-200" : "text-muted"
           }`}
         >
-          Fresh from the coast
+          Fish Mart
         </span>
       </span>
     </span>

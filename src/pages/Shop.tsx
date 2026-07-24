@@ -70,7 +70,7 @@ export default function Shop() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search within seafood…"
-            className="w-full rounded-xl border border-white/10 bg-navy-800 py-2.5 pl-10 pr-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
+            className="w-full rounded-xl border border-brand-100 bg-navy-800 py-2.5 pl-10 pr-4 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100"
           />
           <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted">
             🔍
@@ -79,7 +79,7 @@ export default function Shop() {
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value as Sort)}
-          className="rounded-xl border border-white/10 bg-navy-800 px-3 py-2.5 text-sm font-medium text-ink outline-none focus:border-brand-400"
+          className="rounded-xl border border-brand-100 bg-navy-800 px-3 py-2.5 text-sm font-medium text-ink outline-none focus:border-brand-400"
         >
           <option value="popular">Most popular</option>
           <option value="priceLow">Price: low to high</option>
@@ -144,7 +144,7 @@ function Pill({
       className={`whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition ${
         active
           ? "bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow-md"
-          : "border border-white/10 bg-navy-800 text-ink hover:border-brand-300"
+          : "border border-brand-100 bg-navy-800 text-ink hover:border-brand-300"
       }`}
     >
       {children}

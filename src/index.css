@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
-/* ── Brand theme: warm cream canvas + coral splashes, navy ink
-   (matched to the logo: deep navy · coral accent · blush fish) ───── */
+/* ── Brand theme: clean white canvas + rose accents ───────────────── */
 @theme {
-  --color-brand-50: #fef3ef;
-  --color-brand-100: #fde3db;
-  --color-brand-200: #fbc8b9;
-  --color-brand-300: #f7a68f;
-  --color-brand-400: #f17c5c;
-  --color-brand-500: #e8593a;
-  --color-brand-600: #d4472a;
-  --color-brand-700: #b0371f;
-  --color-brand-800: #8d2f1d;
-  --color-brand-900: #73291b;
+  /* Rose accent scale */
+  --color-brand-50: #fff1f2;
+  --color-brand-100: #ffe4e6;
+  --color-brand-200: #fecdd3;
+  --color-brand-300: #fda4af;
+  --color-brand-400: #fb7185;
+  --color-brand-500: #f43f5e;
+  --color-brand-600: #e11d48;
+  --color-brand-700: #be123c;
+  --color-brand-800: #9f1239;
+  --color-brand-900: #881337;
 
-  /* Deep navy from the logo — used for text and dark surfaces */
-  --color-navy-50: #eeedf5;
-  --color-navy-100: #d6d4e6;
-  --color-navy-500: #2b2960;
-  --color-navy-700: #1f1d47;
-  --color-navy-800: #191740;
-  --color-navy-900: #14122f;
+  /* "navy" scale repurposed as LIGHT surfaces (cards, header, modals) */
+  --color-navy-50: #ffffff;
+  --color-navy-100: #fff5f7;
+  --color-navy-500: #fde7ea;
+  --color-navy-700: #fff1f2;
+  --color-navy-800: #ffffff;
+  --color-navy-900: #fff5f7;
 
-  /* Dark navy canvas (matched to the logo background) → text is now light */
-  --color-ink: #f2f0ff;
-  --color-muted: #a7a3ca;
+  /* Deep plum ink on the white canvas */
+  --color-ink: #3d1f2b;
+  --color-muted: #8a6b74;
 
   /* Modern product typography: Inter for UI/body, Space Grotesk for
      display headings. Both bundled locally (variable), so they always
@@ -37,8 +37,8 @@
   --font-hero: "Baloo 2 Variable", "Space Grotesk Variable", ui-sans-serif,
     system-ui, sans-serif;
 
-  --shadow-soft: 0 10px 30px -12px rgba(0, 0, 0, 0.55);
-  --shadow-card: 0 18px 44px -20px rgba(0, 0, 0, 0.65);
+  --shadow-soft: 0 10px 30px -12px rgba(190, 18, 60, 0.14);
+  --shadow-card: 0 18px 44px -20px rgba(190, 18, 60, 0.22);
 
   --animate-float: float 6s ease-in-out infinite;
 }
@@ -74,13 +74,13 @@
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
-  /* Deep navy from the logo image */
-  background: #14122f;
+  /* Clean white canvas with a whisper of rose */
+  background: #fff7f8;
 }
 
 body {
@@ -113,16 +113,16 @@ body {
 .pop-in { animation: pop-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .toast-in { animation: toast-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
-/* Deep-navy band with coral glow behind hero + section bands (matches the logo) */
+/* Soft rose wash behind hero + section bands */
 .sky-band {
   background:
-    radial-gradient(60% 80% at 15% 0%, rgba(232, 89, 58, 0.18), transparent 60%),
-    radial-gradient(55% 70% at 95% 15%, rgba(241, 124, 92, 0.12), transparent 60%),
-    linear-gradient(180deg, #191740 0%, #14122f 100%);
+    radial-gradient(60% 80% at 15% 0%, rgba(244, 63, 94, 0.10), transparent 60%),
+    radial-gradient(55% 70% at 95% 15%, rgba(251, 113, 133, 0.10), transparent 60%),
+    linear-gradient(180deg, #fff1f2 0%, #fff7f8 100%);
 }
 
 .glass {
-  background: rgba(20, 18, 47, 0.66);
+  background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }

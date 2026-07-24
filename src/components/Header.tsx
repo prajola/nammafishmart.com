@@ -13,17 +13,17 @@ export default function Header() {
   const [acctOpen, setAcctOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-navy-800 shadow-sm">
+    <header className="sticky top-0 z-50 border-b border-brand-100 bg-navy-800 shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3">
         {/* Logo */}
         <Link to="/" className="flex shrink-0 items-center gap-2">
-          <LogoMark className="h-10 w-10" />
+          <LogoMark className="h-12 w-16" />
           <span className="leading-tight">
-            <span className="block text-lg font-extrabold tracking-tight text-ink">
-              Namma<span className="text-brand-500">Fish</span>Mart
+            <span className="block text-xl font-extrabold tracking-tight text-ink">
+              Namma
             </span>
-            <span className="hidden text-[10px] font-semibold uppercase tracking-[0.2em] text-muted sm:block">
-              Fresh from the coast
+            <span className="block text-[10px] font-bold uppercase tracking-[0.28em] text-brand-500">
+              Fish Mart
             </span>
           </span>
         </Link>
@@ -32,14 +32,14 @@ export default function Header() {
         <div className="relative hidden md:block">
           <button
             onClick={() => setLocOpen((o) => !o)}
-            className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-navy-800 px-3 py-2 text-sm hover:border-brand-300"
+            className="flex items-center gap-1.5 rounded-xl border border-brand-100 bg-navy-800 px-3 py-2 text-sm hover:border-brand-300"
           >
             <span>📍</span>
             <span className="font-semibold text-ink">{city}</span>
             <span className="text-muted">▾</span>
           </button>
           {locOpen && (
-            <div className="pop-in absolute left-0 top-12 z-50 w-48 rounded-xl border border-white/10 bg-navy-800 p-2 shadow-xl">
+            <div className="pop-in absolute left-0 top-12 z-50 w-48 rounded-xl border border-brand-100 bg-navy-800 p-2 shadow-xl">
               <p className="px-2 pb-1 text-[11px] font-semibold uppercase text-muted">
                 Deliver to
               </p>
@@ -50,7 +50,7 @@ export default function Header() {
                     setCity(c);
                     setLocOpen(false);
                   }}
-                  className={`flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-sm hover:bg-white/10 ${
+                  className={`flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-sm hover:bg-brand-50 ${
                     c === city ? "font-bold text-brand-600" : "text-ink"
                   }`}
                 >
@@ -71,7 +71,7 @@ export default function Header() {
             to="/shop"
             aria-label="Shop"
             title="Shop"
-            className="hidden items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold text-ink hover:bg-white/10 lg:flex"
+            className="hidden items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold text-ink hover:bg-brand-50 lg:flex"
           >
             <svg
               viewBox="0 0 24 24"
@@ -97,7 +97,7 @@ export default function Header() {
               <>
                 <button
                   onClick={() => setAcctOpen((o) => !o)}
-                  className="flex items-center gap-2 rounded-xl border border-white/10 bg-navy-800 px-2.5 py-2 text-sm hover:border-brand-300"
+                  className="flex items-center gap-2 rounded-xl border border-brand-100 bg-navy-800 px-2.5 py-2 text-sm hover:border-brand-300"
                 >
                   <span className="grid h-6 w-6 place-items-center rounded-full bg-brand-100 text-xs font-bold text-brand-700">
                     {user.name.charAt(0).toUpperCase()}
@@ -107,11 +107,11 @@ export default function Header() {
                   </span>
                 </button>
                 {acctOpen && (
-                  <div className="pop-in absolute right-0 top-12 z-50 w-44 rounded-xl border border-white/10 bg-navy-800 p-2 shadow-xl">
+                  <div className="pop-in absolute right-0 top-12 z-50 w-44 rounded-xl border border-brand-100 bg-navy-800 p-2 shadow-xl">
                     <Link
                       to="/orders"
                       onClick={() => setAcctOpen(false)}
-                      className="block rounded-lg px-3 py-2 text-sm hover:bg-white/10"
+                      className="block rounded-lg px-3 py-2 text-sm hover:bg-brand-50"
                     >
                       📦 My Orders
                     </Link>
@@ -130,7 +130,7 @@ export default function Header() {
             ) : (
               <button
                 onClick={openLogin}
-                className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold text-ink hover:bg-white/10"
+                className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold text-ink hover:bg-brand-50"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -155,7 +155,7 @@ export default function Header() {
             onClick={openCart}
             aria-label="Cart"
             title="Cart"
-            className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold text-ink hover:bg-white/10"
+            className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-bold text-ink hover:bg-brand-50"
           >
             <svg
               viewBox="0 0 24 24"
@@ -172,7 +172,7 @@ export default function Header() {
               <path d="M2 3h2.2l2.3 12.3a1.6 1.6 0 0 0 1.6 1.3h8.7a1.6 1.6 0 0 0 1.6-1.3L21 7H5.3" />
             </svg>
             <span className="hidden sm:inline">Cart</span>
-            <span className="grid h-6 min-w-6 place-items-center rounded-full bg-white px-1.5 text-xs font-extrabold text-brand-600">
+            <span className="grid h-6 min-w-6 place-items-center rounded-full bg-brand-500 px-1.5 text-xs font-extrabold text-white">
               {cartCount}
             </span>
           </button>

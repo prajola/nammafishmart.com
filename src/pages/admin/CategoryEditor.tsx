@@ -42,12 +42,12 @@ export default function CategoryEditor({
   }
 
   const field =
-    "w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm text-ink outline-none focus:border-brand-400";
+    "w-full rounded-lg border border-brand-200 bg-brand-50 px-3 py-2 text-sm text-ink outline-none focus:border-brand-400";
 
   return (
     <div className="fixed inset-0 z-[120] flex items-start justify-center overflow-y-auto p-4">
-      <div className="absolute inset-0 bg-navy-900/70 backdrop-blur-sm" onClick={onClose} />
-      <div className="pop-in relative my-6 w-full max-w-lg rounded-2xl border border-white/10 bg-navy-800 p-6 shadow-2xl">
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={onClose} />
+      <div className="pop-in relative my-6 w-full max-w-lg rounded-2xl border border-brand-100 bg-navy-800 p-6 shadow-2xl">
         <h3 className="text-xl font-extrabold text-ink">
           {isNew ? "New category" : "Edit category"}
         </h3>
@@ -102,7 +102,7 @@ export default function CategoryEditor({
         <div className="mt-5 flex justify-end gap-2">
           <button
             onClick={onClose}
-            className="rounded-lg border border-white/15 px-4 py-2 text-sm font-bold text-ink hover:bg-white/10"
+            className="rounded-lg border border-brand-200 px-4 py-2 text-sm font-bold text-ink hover:bg-brand-50"
           >
             Cancel
           </button>

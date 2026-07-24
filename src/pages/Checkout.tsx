@@ -76,7 +76,7 @@ export default function Checkout() {
   if (placed) {
     return (
       <div className="mx-auto max-w-lg px-4 py-16 text-center">
-        <div className="pop-in rounded-3xl border border-white/10 bg-navy-800 p-8 shadow-[var(--shadow-card)]">
+        <div className="pop-in rounded-3xl border border-brand-100 bg-navy-800 p-8 shadow-[var(--shadow-card)]">
           <div className="mx-auto mb-4 grid h-20 w-20 place-items-center rounded-full bg-green-100 text-5xl">
             ✅
           </div>
@@ -85,7 +85,7 @@ export default function Checkout() {
             Thank you, {placed.address.name.split(" ")[0]}. Your fresh catch is on
             its way.
           </p>
-          <div className="mt-5 rounded-2xl bg-white/5 p-4 text-left text-sm">
+          <div className="mt-5 rounded-2xl bg-brand-50 p-4 text-left text-sm">
             <Row k="Order ID" v={placed.id} />
             <Row k="Delivery slot" v={placed.slot} />
             <Row k="Deliver to" v={`${placed.address.line}, ${placed.address.city}`} />
@@ -100,7 +100,7 @@ export default function Checkout() {
             </Link>
             <Link
               to="/shop"
-              className="flex-1 rounded-xl border border-white/15 bg-navy-800 py-3 font-bold text-brand-700 hover:bg-white/10"
+              className="flex-1 rounded-xl border border-brand-200 bg-navy-800 py-3 font-bold text-brand-700 hover:bg-brand-50"
             >
               Keep shopping
             </Link>
@@ -160,8 +160,8 @@ export default function Checkout() {
                   onClick={() => setSlot(s)}
                   className={`rounded-xl border px-3 py-2.5 text-sm font-semibold transition ${
                     slot === s
-                      ? "border-brand-500 bg-white/5 text-brand-700 ring-2 ring-brand-200"
-                      : "border-white/10 text-ink hover:border-brand-300"
+                      ? "border-brand-500 bg-brand-50 text-brand-700 ring-2 ring-brand-200"
+                      : "border-brand-100 text-ink hover:border-brand-300"
                   }`}
                 >
                   {s}
@@ -181,16 +181,16 @@ export default function Checkout() {
                   onClick={() => !soon && setPay(id)}
                   className={`flex w-full items-center gap-3 rounded-xl border px-4 py-3 text-left text-sm font-semibold transition ${
                     soon
-                      ? "cursor-not-allowed border-white/10 opacity-60"
+                      ? "cursor-not-allowed border-brand-100 opacity-60"
                       : pay === id
-                        ? "border-brand-500 bg-white/5 ring-2 ring-brand-200"
-                        : "border-white/10 hover:border-brand-300"
+                        ? "border-brand-500 bg-brand-50 ring-2 ring-brand-200"
+                        : "border-brand-100 hover:border-brand-300"
                   }`}
                 >
                   <span className="text-xl">{icon}</span>
                   <span className="text-ink">{label}</span>
                   {soon ? (
-                    <span className="ml-auto rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-muted">
+                    <span className="ml-auto rounded-full border border-brand-200 bg-brand-50 px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide text-muted">
                       Coming soon
                     </span>
                   ) : (
@@ -204,7 +204,7 @@ export default function Checkout() {
 
         {/* Summary */}
         <aside className="h-fit lg:sticky lg:top-24">
-          <div className="rounded-2xl border border-white/10 bg-navy-800 p-5 shadow-[var(--shadow-soft)]">
+          <div className="rounded-2xl border border-brand-100 bg-navy-800 p-5 shadow-[var(--shadow-soft)]">
             <p className="mb-3 font-bold text-ink">
               Order summary ({cartProducts.length})
             </p>
@@ -220,13 +220,13 @@ export default function Checkout() {
                 </div>
               ))}
             </div>
-            <div className="my-3 border-t border-dashed border-white/15" />
+            <div className="my-3 border-t border-dashed border-brand-200" />
             <Row2 k="Subtotal" v={money(subtotal)} />
             {discount > 0 && (
               <Row2 k={`Discount (${coupon})`} v={`− ${money(discount)}`} green />
             )}
             <Row2 k="Delivery" v={delivery === 0 ? "FREE" : money(delivery)} green={delivery === 0} />
-            <div className="my-3 border-t border-dashed border-white/15" />
+            <div className="my-3 border-t border-dashed border-brand-200" />
             <div className="flex items-center justify-between">
               <span className="text-lg font-extrabold text-ink">To pay</span>
               <span className="text-2xl font-extrabold text-brand-700">
@@ -252,7 +252,7 @@ export default function Checkout() {
 /* ── small building blocks ── */
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-navy-800 p-5 shadow-[var(--shadow-soft)]">
+    <div className="rounded-2xl border border-brand-100 bg-navy-800 p-5 shadow-[var(--shadow-soft)]">
       <h2 className="mb-3 font-bold text-ink">{title}</h2>
       {children}
     </div>
@@ -279,7 +279,7 @@ function Input({
         required={required}
         disabled={disabled}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2.5 text-sm text-ink outline-none transition focus:border-brand-500 focus:bg-navy-800 focus:ring-2 focus:ring-brand-200 disabled:opacity-60"
+        className="w-full rounded-xl border border-brand-200 bg-brand-50 px-3 py-2.5 text-sm text-ink outline-none transition focus:border-brand-500 focus:bg-navy-800 focus:ring-2 focus:ring-brand-200 disabled:opacity-60"
       />
     </label>
   );

@@ -117,7 +117,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="mt-16 border-t border-white/10 bg-gradient-to-b from-navy-800 to-navy-900 text-muted">
+    <footer className="mt-16 border-t border-brand-100 bg-brand-50 text-muted">
       {/* Newsletter */}
       <div className="sky-band">
         <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 px-4 py-10 text-center md:flex-row md:justify-between md:text-left">
@@ -136,7 +136,7 @@ export default function Footer() {
               type="email"
               required
               placeholder="Enter your email"
-              className="flex-1 rounded-xl border border-white/15 bg-navy-800 px-4 py-3 text-sm text-ink outline-none focus:ring-2 focus:ring-brand-300"
+              className="flex-1 rounded-xl border border-brand-200 bg-navy-800 px-4 py-3 text-sm text-ink outline-none focus:ring-2 focus:ring-brand-300"
             />
             <button className="rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 px-5 py-3 font-bold text-white shadow-md">
               Subscribe
@@ -148,15 +148,15 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 py-12 md:grid-cols-4">
         <div className="col-span-2 md:col-span-1">
           <div className="mb-3 flex items-center gap-3">
-            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-white/5 ring-1 ring-white/10">
+            <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-50 ring-1 ring-brand-200">
               <LogoMark className="h-11 w-11" />
             </span>
             <span className="leading-tight">
-              <span className="block text-xl font-extrabold tracking-tight text-white">
-                Namma<span className="text-brand-500">Fish</span>Mart
+              <span className="block text-xl font-extrabold tracking-tight text-ink">
+                Namma
               </span>
-              <span className="block text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-300">
-                Fresh from the coast
+              <span className="block text-[10px] font-bold uppercase tracking-[0.28em] text-brand-500">
+                Fish Mart
               </span>
             </span>
           </div>
@@ -173,7 +173,7 @@ export default function Footer() {
                 rel="noreferrer"
                 aria-label={name}
                 title={name}
-                className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/20 hover:text-white"
+                className="grid h-9 w-9 place-items-center rounded-full bg-brand-100 text-brand-700 transition hover:bg-brand-200 hover:text-brand-700"
               >
                 {icon}
               </a>
@@ -202,13 +202,13 @@ export default function Footer() {
           ]}
         />
         <div>
-          <h4 className="mb-3 font-bold text-white">Get in touch</h4>
-          <ul className="space-y-2 text-sm text-brand-200">
+          <h4 className="mb-3 font-bold text-ink">Get in touch</h4>
+          <ul className="space-y-2 text-sm text-muted">
             <li>📞 1800-FRESH-FISH</li>
             <li>✉️ nammafishmart@gmail.com</li>
             <li>🕑 Daily 6 AM – 10 PM</li>
           </ul>
-          <p className="mt-3 text-[11px] font-semibold uppercase tracking-wider text-brand-300">
+          <p className="mt-3 text-[11px] font-semibold uppercase tracking-wider text-muted">
             We accept
           </p>
           <div className="mt-1.5 flex flex-wrap gap-1.5">
@@ -221,10 +221,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 px-4 py-5 text-center text-xs text-brand-300">
+      <div className="border-t border-brand-100 px-4 py-5 text-center text-xs text-muted">
         © {new Date().getFullYear()} Namma Fish Mart. Freshness guaranteed or your
         money back. · A demo storefront. ·{" "}
-        <Link to="/admin" className="hover:text-white">
+        <Link to="/admin" className="hover:text-brand-600">
           Admin
         </Link>
       </div>
@@ -241,11 +241,11 @@ function FooterCol({
 }) {
   return (
     <div>
-      <h4 className="mb-3 font-bold text-white">{title}</h4>
-      <ul className="space-y-2 text-sm text-brand-200">
+      <h4 className="mb-3 font-bold text-ink">{title}</h4>
+      <ul className="space-y-2 text-sm text-muted">
         {links.map(([label, to]) => (
           <li key={label}>
-            <Link to={to} className="hover:text-white">
+            <Link to={to} className="hover:text-brand-600">
               {label}
             </Link>
           </li>
