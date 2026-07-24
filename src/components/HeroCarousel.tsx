@@ -22,7 +22,7 @@ const SLIDES: Slide[] = [
     to: "/shop?cat=DryFish",
     img: "/images/dried-anchovy.jpg",
     grad: "from-brand-900/60 via-navy-800 to-navy-900",
-    accent: "text-amber-400",
+    accent: "text-brand-600",
   },
   {
     eyebrow: "Fresh catch of the day",
@@ -32,7 +32,7 @@ const SLIDES: Slide[] = [
     to: "/product/tiger-prawns",
     img: "/images/tiger-prawns.jpg",
     grad: "from-navy-700 via-navy-800 to-navy-900",
-    accent: "text-amber-400",
+    accent: "text-brand-600",
   },
   {
     eyebrow: "Best-value combo",
@@ -42,7 +42,7 @@ const SLIDES: Slide[] = [
     to: "/product/family-feast",
     img: "/images/family-feast.jpg",
     grad: "from-navy-700 via-navy-800 to-navy-900",
-    accent: "text-amber-400",
+    accent: "text-brand-600",
   },
   {
     eyebrow: "Always on us",
@@ -52,7 +52,7 @@ const SLIDES: Slide[] = [
     to: "/shop",
     img: "/images/seer-steaks.jpg",
     grad: "from-brand-900/50 via-navy-800 to-navy-900",
-    accent: "text-amber-400",
+    accent: "text-brand-600",
   },
 ];
 
@@ -81,7 +81,7 @@ export default function HeroCarousel() {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-6">
       <div
-        className="group relative overflow-hidden rounded-3xl border border-white/10 shadow-[var(--shadow-card)]"
+        className="group relative overflow-hidden rounded-3xl border border-brand-100 shadow-[var(--shadow-card)]"
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
@@ -97,7 +97,7 @@ export default function HeroCarousel() {
             >
               {/* Text */}
               <div className="order-2 sm:order-1">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-700 shadow-sm ring-1 ring-brand-100">
+                <span className="inline-flex items-center gap-2 rounded-full bg-brand-100 px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-700 shadow-sm">
                   {s.eyebrow}
                 </span>
                 <h2 className="mt-3 font-hero text-4xl font-extrabold leading-[1.05] text-ink md:text-6xl">
@@ -135,14 +135,14 @@ export default function HeroCarousel() {
         <button
           onClick={() => go(-1)}
           aria-label="Previous slide"
-          className="absolute left-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-navy-900 opacity-0 shadow-md transition hover:bg-white group-hover:opacity-100 sm:grid"
+          className="absolute left-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-ink opacity-0 shadow-md transition hover:bg-white group-hover:opacity-100 sm:grid"
         >
           ‹
         </button>
         <button
           onClick={() => go(1)}
           aria-label="Next slide"
-          className="absolute right-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-navy-900 opacity-0 shadow-md transition hover:bg-white group-hover:opacity-100 sm:grid"
+          className="absolute right-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-ink opacity-0 shadow-md transition hover:bg-white group-hover:opacity-100 sm:grid"
         >
           ›
         </button>

@@ -28,7 +28,7 @@ export default function ProductImage({
       alt={product.name}
       loading="lazy"
       onError={() => setFailed(true)}
-      className={`bg-white/5 object-cover ${className}`}
+      className={`bg-brand-50 object-cover ${className}`}
     />
   );
 }

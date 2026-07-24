@@ -47,7 +47,7 @@ export default function ProductDetail() {
 
       <div className="grid gap-8 md:grid-cols-2">
         {/* Art */}
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-[var(--shadow-card)]">
+        <div className="relative overflow-hidden rounded-3xl border border-brand-100 shadow-[var(--shadow-card)]">
           {off > 0 && (
             <span className="absolute left-4 top-4 z-10 rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-3 py-1.5 text-sm font-bold text-white shadow">
               {off}% OFF
@@ -62,7 +62,7 @@ export default function ProductDetail() {
             {product.tags?.map((t) => (
               <span
                 key={t}
-                className="rounded-full bg-white/5 px-3 py-1 text-xs font-bold text-brand-700 ring-1 ring-brand-100"
+                className="rounded-full bg-brand-50 px-3 py-1 text-xs font-bold text-brand-700 ring-1 ring-brand-100"
               >
                 {t}
               </span>
@@ -113,7 +113,7 @@ export default function ProductDetail() {
               ["Serves", product.serves ?? "—"],
               ["Category", product.category],
             ].map(([k, v]) => (
-              <div key={k} className="rounded-xl border border-white/10 bg-white/5 p-3">
+              <div key={k} className="rounded-xl border border-brand-100 bg-brand-50 p-3">
                 <dt className="text-xs font-semibold uppercase text-muted">{k}</dt>
                 <dd className="font-bold text-ink">{v}</dd>
               </div>
@@ -123,14 +123,14 @@ export default function ProductDetail() {
           {/* CTA */}
           <div className="mt-6 flex items-center gap-3">
             {product.soldOut ? (
-              <span className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 py-3.5 text-lg font-bold text-muted">
+              <span className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-brand-200 bg-brand-50 py-3.5 text-lg font-bold text-muted">
                 🛒 Out Of Stock
               </span>
             ) : inCart ? (
-              <div className="flex items-center gap-2 rounded-xl bg-white/5 p-1 ring-1 ring-brand-200">
+              <div className="flex items-center gap-2 rounded-xl bg-brand-50 p-1 ring-1 ring-brand-200">
                 <button
                   onClick={() => setQty(product.id, inCart.qty - 1)}
-                  className="grid h-11 w-11 place-items-center rounded-lg text-xl font-bold text-brand-700 hover:bg-navy-800"
+                  className="grid h-11 w-11 place-items-center rounded-lg text-xl font-bold text-brand-700 hover:bg-brand-50"
                 >
                   −
                 </button>
@@ -139,7 +139,7 @@ export default function ProductDetail() {
                 </span>
                 <button
                   onClick={() => setQty(product.id, inCart.qty + 1)}
-                  className="grid h-11 w-11 place-items-center rounded-lg text-xl font-bold text-brand-700 hover:bg-navy-800"
+                  className="grid h-11 w-11 place-items-center rounded-lg text-xl font-bold text-brand-700 hover:bg-brand-50"
                 >
                   +
                 </button>
@@ -154,7 +154,7 @@ export default function ProductDetail() {
             )}
             <button
               onClick={openCart}
-              className="rounded-xl border border-white/15 bg-navy-800 px-6 py-3.5 font-bold text-brand-700 hover:bg-white/10"
+              className="rounded-xl border border-brand-200 bg-navy-800 px-6 py-3.5 font-bold text-brand-700 hover:bg-brand-50"
             >
               Go to cart 🛒
             </button>

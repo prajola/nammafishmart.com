@@ -47,7 +47,7 @@ export default function ImageInput({
         {label}
       </label>
       <div className="flex items-center gap-3">
-        <div className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-xl border border-white/10 bg-white/5">
+        <div className="grid h-20 w-20 shrink-0 place-items-center overflow-hidden rounded-xl border border-brand-100 bg-brand-50">
           {preview ? (
             <img
               src={preview}
@@ -59,7 +59,7 @@ export default function ImageInput({
           )}
         </div>
         <div className="flex-1">
-          <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-3 py-2 text-sm font-semibold text-ink hover:bg-white/10">
+          <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-brand-200 bg-brand-50 px-3 py-2 text-sm font-semibold text-ink hover:bg-brand-50">
             {busy ? "Uploading…" : "Upload image"}
             <input
               type="file"
@@ -73,7 +73,7 @@ export default function ImageInput({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder="…or paste an image URL / path"
-            className="mt-2 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-1.5 text-xs text-ink outline-none focus:border-brand-400"
+            className="mt-2 w-full rounded-lg border border-brand-200 bg-brand-50 px-3 py-1.5 text-xs text-ink outline-none focus:border-brand-400"
           />
           {err && <p className="mt-1 text-xs text-red-400">{err}</p>}
         </div>

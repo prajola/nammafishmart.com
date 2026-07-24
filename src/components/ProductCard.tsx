@@ -20,7 +20,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const off = discountPct(product);
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-navy-800 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card)]">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-brand-100 bg-navy-800 shadow-[var(--shadow-soft)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card)]">
       {off > 0 && (
         <span className="absolute left-3 top-3 z-10 rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-2.5 py-1 text-[11px] font-bold text-white shadow">
           {off}% OFF
@@ -76,15 +76,15 @@ export default function ProductCard({ product }: { product: Product }) {
           </div>
 
           {product.soldOut ? (
-            <span className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3.5 py-2 text-sm font-bold text-muted">
+            <span className="flex items-center gap-1.5 rounded-full border border-brand-200 bg-brand-50 px-3.5 py-2 text-sm font-bold text-muted">
               🛒 Out Of Stock
             </span>
           ) : inCart ? (
-            <div className="flex items-center gap-1 rounded-full bg-white/5 p-0.5 ring-1 ring-brand-200">
+            <div className="flex items-center gap-1 rounded-full bg-brand-50 p-0.5 ring-1 ring-brand-200">
               <button
                 aria-label="decrease"
                 onClick={() => setQty(product.id, inCart.qty - 1)}
-                className="grid h-7 w-7 place-items-center rounded-full text-brand-700 hover:bg-navy-800"
+                className="grid h-7 w-7 place-items-center rounded-full text-brand-700 hover:bg-brand-50"
               >
                 −
               </button>
@@ -94,7 +94,7 @@ export default function ProductCard({ product }: { product: Product }) {
               <button
                 aria-label="increase"
                 onClick={() => setQty(product.id, inCart.qty + 1)}
-                className="grid h-7 w-7 place-items-center rounded-full text-brand-700 hover:bg-navy-800"
+                className="grid h-7 w-7 place-items-center rounded-full text-brand-700 hover:bg-brand-50"
               >
                 +
               </button>

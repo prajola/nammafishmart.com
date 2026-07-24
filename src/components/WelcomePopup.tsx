@@ -29,7 +29,7 @@ export default function WelcomePopup() {
       <div className="pop-in relative w-full max-w-md overflow-hidden rounded-3xl bg-navy-800 text-center shadow-2xl">
         <button
           onClick={close}
-          className="absolute right-4 top-4 z-10 grid h-8 w-8 place-items-center rounded-full bg-white/90 text-navy-900 hover:bg-white"
+          className="absolute right-4 top-4 z-10 grid h-8 w-8 place-items-center rounded-full bg-brand-100 text-ink hover:bg-brand-200"
           aria-label="Close"
         >
           ✕
@@ -44,7 +44,7 @@ export default function WelcomePopup() {
         </div>
         <div className="px-8 pb-8 pt-6">
           <div className="mb-4 flex items-center justify-center gap-2">
-            <span className="rounded-lg border-2 border-dashed border-brand-400 bg-white/5 px-4 py-2 text-lg font-extrabold tracking-widest text-brand-700">
+            <span className="rounded-lg border-2 border-dashed border-brand-400 bg-brand-50 px-4 py-2 text-lg font-extrabold tracking-widest text-brand-700">
               NEW50
             </span>
           </div>

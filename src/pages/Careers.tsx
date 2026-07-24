@@ -37,18 +37,18 @@ export default function Careers() {
           {ROLES.map(([title, loc, dept, type]) => (
             <div
               key={title}
-              className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-navy-800 p-5 shadow-[var(--shadow-soft)] transition hover:border-brand-300"
+              className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-brand-100 bg-navy-800 p-5 shadow-[var(--shadow-soft)] transition hover:border-brand-300"
             >
               <div>
                 <h3 className="text-lg font-bold text-ink">{title}</h3>
                 <div className="mt-1 flex flex-wrap gap-2 text-xs">
-                  <span className="rounded-full bg-white/5 px-2.5 py-1 font-semibold text-brand-700">
+                  <span className="rounded-full bg-brand-50 px-2.5 py-1 font-semibold text-brand-700">
                     📍 {loc}
                   </span>
-                  <span className="rounded-full bg-white/5 px-2.5 py-1 font-semibold text-brand-700">
+                  <span className="rounded-full bg-brand-50 px-2.5 py-1 font-semibold text-brand-700">
                     {dept}
                   </span>
-                  <span className="rounded-full bg-white/5 px-2.5 py-1 font-semibold text-brand-700">
+                  <span className="rounded-full bg-brand-50 px-2.5 py-1 font-semibold text-brand-700">
                     {type}
                   </span>
                 </div>
@@ -63,7 +63,7 @@ export default function Careers() {
           ))}
         </div>
 
-        <div className="mt-10 rounded-2xl bg-white/5 p-6 text-center">
+        <div className="mt-10 rounded-2xl bg-brand-50 p-6 text-center">
           <p className="font-bold text-ink">Don't see your role?</p>
           <p className="text-sm text-muted">
             We're always keen to meet great people. Write to us at{" "}

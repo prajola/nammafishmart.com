@@ -35,7 +35,7 @@ export default function Sourcing() {
               <div className="z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-brand-400 to-brand-600 text-2xl text-white shadow-md">
                 {icon}
               </div>
-              <div className="rounded-2xl border border-white/10 bg-navy-800 p-5 shadow-[var(--shadow-soft)]">
+              <div className="rounded-2xl border border-brand-100 bg-navy-800 p-5 shadow-[var(--shadow-soft)]">
                 <p className="text-xs font-bold uppercase tracking-widest text-brand-500">
                   Step {i + 1}
                 </p>
@@ -52,7 +52,7 @@ export default function Sourcing() {
             ["🧪", "Lab-tested", "Regular water and sample testing keeps every batch safe and clean."],
             ["♻️", "Zero-waste packing", "Recyclable, insulated packaging that keeps cold in and waste out."],
           ].map(([i, t, d]) => (
-            <div key={t} className="rounded-2xl bg-white/5 p-5">
+            <div key={t} className="rounded-2xl bg-brand-50 p-5">
               <div className="text-3xl">{i}</div>
               <h3 className="mt-2 font-bold text-ink">{t}</h3>
               <p className="text-sm text-muted">{d}</p>

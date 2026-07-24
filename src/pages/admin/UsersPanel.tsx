@@ -42,7 +42,7 @@ export default function UsersPanel() {
 
   if (backend !== "supabase") {
     return (
-      <div className="mt-5 rounded-2xl border border-white/10 bg-navy-800 p-6">
+      <div className="mt-5 rounded-2xl border border-brand-100 bg-navy-800 p-6">
         <p className="text-sm text-amber-400">
           Multi-user management needs Supabase. In local preview mode the admin
           is a single shared passcode.
@@ -105,12 +105,12 @@ export default function UsersPanel() {
   }
 
   const field =
-    "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-ink outline-none focus:border-brand-400";
+    "w-full rounded-xl border border-brand-200 bg-brand-50 px-4 py-2.5 text-sm text-ink outline-none focus:border-brand-400";
 
   return (
     <section className="mt-5 space-y-6">
       {/* Invite */}
-      <div className="rounded-2xl border border-white/10 bg-navy-800 p-5">
+      <div className="rounded-2xl border border-brand-100 bg-navy-800 p-5">
         <h3 className="text-sm font-extrabold uppercase tracking-wide text-muted">
           Invite an admin
         </h3>
@@ -147,8 +147,8 @@ export default function UsersPanel() {
       )}
 
       {/* Admin list */}
-      <div className="overflow-hidden rounded-2xl border border-white/10">
-        <div className="border-b border-white/10 bg-navy-800 px-4 py-3 text-xs font-bold uppercase tracking-wide text-muted">
+      <div className="overflow-hidden rounded-2xl border border-brand-100">
+        <div className="border-b border-brand-100 bg-navy-800 px-4 py-3 text-xs font-bold uppercase tracking-wide text-muted">
           Admins ({admins.length})
         </div>
         {loading ? (
@@ -161,7 +161,7 @@ export default function UsersPanel() {
           admins.map((a) => (
             <div
               key={a.email}
-              className="flex flex-wrap items-center gap-3 border-b border-white/10 bg-navy-800 p-3 last:border-0"
+              className="flex flex-wrap items-center gap-3 border-b border-brand-100 bg-navy-800 p-3 last:border-0"
             >
               <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-500/20 text-sm font-bold text-brand-300">
                 {a.email.charAt(0).toUpperCase()}
@@ -170,7 +170,7 @@ export default function UsersPanel() {
                 <p className="truncate text-sm font-bold text-ink">
                   {a.email}
                   {a.email === me?.toLowerCase() && (
-                    <span className="ml-2 rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-bold uppercase text-muted">
+                    <span className="ml-2 rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-bold uppercase text-muted">
                       You
                     </span>
                   )}
@@ -183,7 +183,7 @@ export default function UsersPanel() {
               </div>
               <button
                 onClick={() => onReset(a.email)}
-                className="rounded-lg border border-white/15 px-3 py-1.5 text-xs font-bold text-ink hover:bg-white/10"
+                className="rounded-lg border border-brand-200 px-3 py-1.5 text-xs font-bold text-ink hover:bg-brand-50"
               >
                 Reset password
               </button>

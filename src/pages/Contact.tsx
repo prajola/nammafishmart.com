@@ -53,9 +53,9 @@ export default function Contact() {
           ].map(([i, t, a, s]) => (
             <div
               key={t}
-              className="flex gap-4 rounded-2xl border border-white/10 bg-navy-800 p-4 shadow-[var(--shadow-soft)]"
+              className="flex gap-4 rounded-2xl border border-brand-100 bg-navy-800 p-4 shadow-[var(--shadow-soft)]"
             >
-              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-white/5 text-2xl">
+              <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand-50 text-2xl">
                 {i}
               </div>
               <div>
@@ -70,7 +70,7 @@ export default function Contact() {
         </div>
 
         {/* Form */}
-        <div className="rounded-3xl border border-white/10 bg-navy-800 p-6 shadow-[var(--shadow-card)]">
+        <div className="rounded-3xl border border-brand-100 bg-navy-800 p-6 shadow-[var(--shadow-card)]">
           {sent && (
             <div className="mb-4 rounded-xl bg-green-50 px-4 py-3 text-sm font-semibold text-green-700">
               ✅ Message sent! We'll be in touch soon.
@@ -92,7 +92,7 @@ export default function Contact() {
               <select
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2.5 text-sm text-ink outline-none focus:border-brand-500 focus:bg-navy-800 focus:ring-2 focus:ring-brand-200"
+                className="w-full rounded-xl border border-brand-200 bg-brand-50 px-3 py-2.5 text-sm text-ink outline-none focus:border-brand-500 focus:bg-navy-800 focus:ring-2 focus:ring-brand-200"
               >
                 {["General enquiry", "Order support", "Bulk / catering", "Feedback", "Partnership"].map(
                   (s) => (
@@ -108,7 +108,7 @@ export default function Contact() {
                 onChange={(e) => setMessage(e.target.value)}
                 rows={4}
                 placeholder="How can we help?"
-                className="w-full resize-none rounded-xl border border-white/15 bg-white/5 px-3 py-2.5 text-sm text-ink outline-none focus:border-brand-500 focus:bg-navy-800 focus:ring-2 focus:ring-brand-200"
+                className="w-full resize-none rounded-xl border border-brand-200 bg-brand-50 px-3 py-2.5 text-sm text-ink outline-none focus:border-brand-500 focus:bg-navy-800 focus:ring-2 focus:ring-brand-200"
               />
             </label>
             <button className="w-full rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 py-3 font-bold text-white shadow-lg transition hover:brightness-105">
@@ -142,7 +142,7 @@ function Field({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2.5 text-sm text-ink outline-none focus:border-brand-500 focus:bg-navy-800 focus:ring-2 focus:ring-brand-200"
+        className="w-full rounded-xl border border-brand-200 bg-brand-50 px-3 py-2.5 text-sm text-ink outline-none focus:border-brand-500 focus:bg-navy-800 focus:ring-2 focus:ring-brand-200"
       />
     </label>
   );
