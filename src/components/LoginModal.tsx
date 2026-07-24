@@ -119,8 +119,8 @@ export default function LoginModal() {
           >
             ✕
           </button>
-          <span className="grid h-14 w-14 place-items-center rounded-2xl bg-white/5 shadow-md ring-1 ring-white/10">
-            <LogoMark className="h-11 w-11" />
+          <span className="grid h-14 w-14 place-items-center overflow-hidden rounded-2xl bg-white p-1.5 shadow-md">
+            <LogoMark className="h-full w-full" />
           </span>
           <h2 className="mt-3 text-2xl font-extrabold text-ink">
             {mode === "login" ? "Welcome back" : "Create your account"}
