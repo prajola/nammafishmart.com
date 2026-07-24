@@ -15,7 +15,7 @@ export default function About() {
             </span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-muted">
-            Namma Fish Mart started with a simple idea — buying quality seafood
+            Royal Kai started with a simple idea — buying quality seafood
             shouldn't mean a 6 AM trip to a crowded market. We bring the harbour
             to your doorstep: hand-picked, cleaned, cut and delivered the same day.
           </p>

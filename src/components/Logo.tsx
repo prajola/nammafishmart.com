@@ -1,14 +1,14 @@
 import { asset } from "../lib/asset";
 
 /**
- * Namma Fish Mart brand mark — the actual logo artwork (fish + coral curve)
+ * Royal Kai brand mark — the actual logo artwork (fish + coral curve)
  * with a transparent background, so it sits cleanly on any surface.
  */
 export function LogoMark({ className = "h-10 w-10" }: { className?: string }) {
   return (
     <img
       src={asset("/logo.png")}
-      alt="Namma Fish Mart"
+      alt="Royal Kai"
       className={`object-contain ${className}`}
     />
   );
@@ -30,7 +30,7 @@ export function Logo({
             dark ? "text-white" : "text-ink"
           }`}
         >
-          Namma<span className="text-brand-500">Fish</span>Mart
+          Royal <span className="text-brand-500">Kai</span>
         </span>
         <span
           className={`hidden text-[10px] font-semibold uppercase tracking-[0.2em] sm:block ${

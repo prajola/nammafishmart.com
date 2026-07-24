@@ -20,7 +20,7 @@ export default function Header() {
           <LogoMark className="h-10 w-10" />
           <span className="leading-tight">
             <span className="block text-lg font-extrabold tracking-tight text-ink">
-              Namma<span className="text-brand-500">Fish</span>Mart
+              Royal <span className="text-brand-500">Kai</span>
             </span>
             <span className="hidden text-[10px] font-semibold uppercase tracking-[0.2em] text-muted sm:block">
               Fresh from the coast
